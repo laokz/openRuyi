@@ -298,7 +298,7 @@ pushd %{buildroot}%{_prefix}/lib/rpm/
 for f in rpm2cpio.sh rpm.daily rpmdiff* rpm.log rpm.xinetd freshen.sh u_pkg.sh \
          ocaml-find-provides.sh ocaml-find-requires.sh fileattrs/ocaml.attr \
          magic magic.mgc magic.mime* rpmfile *.pl javadeps brp-redhat \
-         brp-strip-static-archive vpkg-provides*.sh http.req sql.req tcl.req \
+         vpkg-provides*.sh http.req sql.req tcl.req \
          brp-sparc64-linux brp-strip-comment-note brp-java-gcjcompile
 do
     rm -f $f

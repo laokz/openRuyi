@@ -11,7 +11,7 @@
 
 %global maj_ver 21
 %global min_ver 1
-%global patch_ver 7
+%global patch_ver 8
 #global rc_ver rc3
 
 # Build compat packages llvmN instead of main package for the current LLVM
@@ -157,18 +157,14 @@ Summary:        The Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 URL:            http://llvm.org
 VCS:            git:https://github.com/llvm/llvm-project.git
-#!RemoteAsset
+#!RemoteAsset:  sha256:4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142
 Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{maj_ver}.%{min_ver}.%{patch_ver}%{?rc_ver:-%{rc_ver}}/%{src_tarball_dir}.tar.xz
-#!RemoteAsset
-Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{maj_ver}.%{min_ver}.%{patch_ver}%{?rc_ver:-%{rc_ver}}/%{src_tarball_dir}.tar.xz.sig
 %if %{without compat_build}
 Source2:        macros.%{pkg_name_clang}
 %endif
 %if %{with bundle_compat_lib}
-#!RemoteAsset
+#!RemoteAsset:  sha256:6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d
 Source3000:     https://github.com/llvm/llvm-project/releases/download/llvmorg-%{compat_ver}/llvm-project-%{compat_ver}.src.tar.xz
-#!RemoteAsset
-Source3001:     https://github.com/llvm/llvm-project/releases/download/llvmorg-%{compat_ver}/llvm-project-%{compat_ver}.src.tar.xz.sig
 %endif
 
 # please keep the patches in different groups for easier maintenance
@@ -997,6 +993,9 @@ cd ..
 %ninja_build -C ../llvm-compat-libs libclang-cpp.so
 %ninja_build -C ../llvm-compat-libs liblldb.so
 %endif
+
+# strip all static libraries debuginfo
+RPM_BUILD_ROOT=%{buildroot}%{_libdir} %__brp_strip_static_archive
 
 %install
 # First install LLVM
@@ -2156,4 +2155,4 @@ fi
 %endif
 
 %changelog
-%{?autochangelog}
+%autochangelog
