@@ -79,10 +79,11 @@ Requires:       python3-pyelftools
 
 # Only run fast-tests; other tests require environments with hugepages, etc.
 %check
+CPUSET=`taskset -pc $$|cut -d' ' -f6`
 tests=$(meson test -C %{_vpath_builddir} --suite fast-tests --list \
   | awk '{print $3}' \
   | grep -Ev 'argparse_autotest|rwlock_test1_autotest|pflock_autotest|ticketlock_autotest')
-meson test -C %{_vpath_builddir} --num-processes %{_smp_build_ncpus} --print-errorlogs $tests
+meson test --test-args="\"-l $CPUSET\"" -C %{_vpath_builddir} --num-processes %{_smp_build_ncpus} --print-errorlogs $tests
 
 %files
 %{_bindir}/dpdk-testpmd
