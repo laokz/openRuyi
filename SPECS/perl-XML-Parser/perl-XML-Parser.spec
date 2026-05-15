@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Perl module for parsing XML documents
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/XML-Parser
-#!RemoteAsset
+#!RemoteAsset:  sha256:ad4aae643ec784f489b956abe952432871a622d4e2b5c619e8855accbfc4d1d8
 Source0:        http://www.cpan.org/authors/id/T/TO/TODDR/XML-Parser-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.4.50
+BuildRequires:  perl-devel >= 5.4.50
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Test::More)
@@ -52,4 +52,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README README.md
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Perl Binding for libxml2
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/XML-LibXML
-#!RemoteAsset
+#!RemoteAsset:  sha256:a29bf3f00ab9c9ee04218154e0afc8f799bf23674eb99c1a9ed4de1f4059a48d
 Source0:        http://www.cpan.org/authors/id/S/SH/SHLOMIF/XML-LibXML-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.1
+BuildRequires:  perl-devel >= 5.8.1
 BuildRequires:  perl(base)
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Config)
@@ -78,4 +78,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes HACKING.txt README TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

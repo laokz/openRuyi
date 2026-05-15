@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        Distribution of general-utility subroutines
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Scalar-List-Utils
-#!RemoteAsset
+#!RemoteAsset:  sha256:e0cc03f9fe3565cdf4d6102654f87bba3bca2d8ff989da38307e857d0ae3c886
 Source0:        http://www.cpan.org/authors/id/P/PE/PEVANS/Scalar-List-Utils-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.0
+BuildRequires:  perl-devel >= 5.6.0
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Test::More)
 
@@ -43,4 +43,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

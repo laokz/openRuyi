@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Unicode Collation Algorithm
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Unicode-Collate
-#!RemoteAsset
+#!RemoteAsset:  sha256:b75dd07bbc252937b1b87064bf79ccd0a1b7ee993b8cf0e80f47406c3205639f
 Source0:        http://www.cpan.org/authors/id/S/SA/SADAHIRO/Unicode-Collate-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp)
@@ -45,4 +46,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes Collate.pmN disableXS enableXS MANIFEST.N mkheader mklocale README
 
 %changelog
-%{?autochangelog}
+%autochangelog

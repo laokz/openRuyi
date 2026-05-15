@@ -5,16 +5,17 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           perl-GD
-Version:        2.83
+Version:        2.84
 Release:        %autorelease
 Summary:        GD Perl module
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/GD
-#!RemoteAsset
+#!RemoteAsset:  sha256:3cfe4db20c218eb8e3d670f2e5b7571f1cc8a2d0fd55611bb3cfad3a3335564f
 Source0:        http://www.cpan.org/authors/id/R/RU/RURBAN/GD-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  pkgconfig(gdlib)
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Config)
@@ -60,4 +61,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc ChangeLog const-c.inc const-xs.inc README README.QUICKDRAW testcpan.sh testlibs.sh
 
 %changelog
-%{?autochangelog}
+%autochangelog

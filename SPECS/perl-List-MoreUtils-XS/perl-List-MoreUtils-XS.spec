@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Provide compiled List::MoreUtils functions
 License:        Apache-2.0
 URL:            https://metacpan.org/dist/List-MoreUtils-XS
-#!RemoteAsset
+#!RemoteAsset:  sha256:e8ce46d57c179eecd8758293e9400ff300aaf20fefe0a9d15b9fe2302b9cb242
 Source0:        http://www.cpan.org/authors/id/R/RE/REHSACK/List-MoreUtils-XS-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -47,4 +48,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc ARTISTIC-1.0 Changes GPL-1 MAINTAINER.md README.md
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        High resolution alarm, sleep, gettimeofday, interval timers
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Time-HiRes
-#!RemoteAsset
+#!RemoteAsset:  sha256:9841be5587bfb7cd1f2fe267b5e5ac04ce25e79d5cc77e5ef9a9c5abd101d7b1
 Source0:        http://www.cpan.org/authors/id/A/AT/ATOOMIC/Time-HiRes-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.0
+BuildRequires:  perl-devel >= 5.6.0
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Exporter)
@@ -51,4 +51,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

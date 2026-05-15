@@ -6,18 +6,18 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           perl-Text-CSV_XS
-Version:        1.61
+Version:        1.62
 Release:        %autorelease
 Summary:        Comma-separated values manipulation routines
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Text-CSV_XS
-#!RemoteAsset
+#!RemoteAsset:  sha256:1710693eddaefdd56e74da42baa9ed676e7eaed28ebd303ad23c982fef2b1415
 Source0:        http://www.cpan.org/authors/id/H/HM/HMBRAND/Text-CSV_XS-%{version}.tgz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.1
+BuildRequires:  perl-devel >= 5.6.1
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Encode) >= 3.21
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -50,4 +50,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc ChangeLog CONTRIBUTING.md LOVE_LETTER.md README SECURITY.md
 
 %changelog
-%{?autochangelog}
+%autochangelog

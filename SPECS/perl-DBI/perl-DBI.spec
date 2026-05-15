@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Database independent interface for Perl
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/DBI
-#!RemoteAsset
+#!RemoteAsset:  sha256:0df16af8e5b3225a68b7b592ab531004ddb35a9682b50300ce50174ad867d9aa
 Source0:        http://www.cpan.org/authors/id/H/HM/HMBRAND/DBI-%{version}.tgz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.1
+BuildRequires:  perl-devel >= 5.8.1
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Test::Simple) >= 0.90
 
@@ -44,4 +44,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc ChangeLog Driver.xst README.md
 
 %changelog
-%{?autochangelog}
+%autochangelog

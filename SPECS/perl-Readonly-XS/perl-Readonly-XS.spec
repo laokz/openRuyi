@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Companion module for Readonly.pm, to speed up read-only scalar variables
 License:        CHECK(GPL-1.0-or-later OR Artistic-1.0-Perl)
 URL:            https://metacpan.org/dist/Readonly-XS
-#!RemoteAsset
+#!RemoteAsset:  sha256:8ae5c4e85299e5c8bddd1b196f2eea38f00709e0dc0cb60454dc9114ae3fff0d
 Source0:        http://www.cpan.org/authors/id/R/RO/ROODE/Readonly-XS-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -43,4 +44,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

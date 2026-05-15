@@ -11,7 +11,7 @@ Release:        %autorelease
 Summary:        Write Brotli buffers/streams
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/IO-Compress-Brotli
-#!RemoteAsset
+#!RemoteAsset:  sha256:37f40dd7cee44acea26f2f763a773e61d4ec223305ddeeca4612443cbf288fbf
 Source0:        http://www.cpan.org/authors/id/T/TI/TIMLEGGE/IO-Compress-Brotli-%{version}.tar.gz
 
 # Use pkgconfig instead of bundled libbrotli
@@ -20,7 +20,7 @@ Patch0:         0001-use-system-brotli.patch
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.0
+BuildRequires:  perl-devel >= 5.8.0
 #BuildRequires:  perl(Alien::cmake3)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Slurper)
@@ -55,4 +55,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

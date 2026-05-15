@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Persistence for Perl data structures
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Storable
-#!RemoteAsset
+#!RemoteAsset:  sha256:e1e96b24a076792fde52154789fe4b76034b9ad39c8a1a819ead77d50d5f1817
 Source0:        http://www.cpan.org/authors/id/N/NW/NWCLARK/Storable-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -42,4 +43,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc ChangeLog README stacksize
 
 %changelog
-%{?autochangelog}
+%autochangelog

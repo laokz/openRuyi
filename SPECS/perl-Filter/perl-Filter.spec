@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Filter Perl module
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Filter
-#!RemoteAsset
+#!RemoteAsset:  sha256:cb70da7ae5e19138a0b22fb3b6387c3ae697a3cd3f3f6ecde425152e9124d1e6
 Source0:        http://www.cpan.org/authors/id/R/RU/RURBAN/Filter-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -45,4 +46,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes mytest README
 
 %changelog
-%{?autochangelog}
+%autochangelog

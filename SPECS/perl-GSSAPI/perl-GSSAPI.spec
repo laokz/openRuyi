@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Perl extension providing access to the GSSAPIv2 library
 License:        CHECK(GPL-1.0-or-later OR Artistic-1.0-Perl)
 URL:            https://metacpan.org/dist/GSSAPI
-#!RemoteAsset
+#!RemoteAsset:  sha256:7d8f2c7b61762fb4ec72d2ec281290f2f87f9c7d298273da4525432a65e770d6
 Source0:        http://www.cpan.org/authors/id/A/AG/AGROLMS/GSSAPI-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
@@ -42,4 +43,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Build external dependencies for use in CPAN
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Alien-Build
-#!RemoteAsset
+#!RemoteAsset:  sha256:8e891fd3acbac39dd8fdc01376b9abff931e625be41e0910ca30ad59363b4477
 Source0:        http://www.cpan.org/authors/id/P/PL/PLICEASE/Alien-Build-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.4
+BuildRequires:  perl-devel >= 5.8.4
 BuildRequires:  perl(Capture::Tiny) >= 0.17
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(ExtUtils::CBuilder)
@@ -66,4 +66,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc author.yml Changes Changes.Alien-Base Changes.Alien-Base-Wrapper Changes.Alien-Build-Decode-Mojo Changes.Test-Alien perlcriticrc README spellcheck.ini SUPPORT weaver.ini
 
 %changelog
-%{?autochangelog}
+%autochangelog

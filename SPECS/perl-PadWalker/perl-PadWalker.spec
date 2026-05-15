@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Play with other peoples' lexical variables
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/PadWalker
-#!RemoteAsset
+#!RemoteAsset:  sha256:07b26abb841146af32072a8d68cb90176ffb176fd9268e6f2f7d106f817a0cd0
 Source0:        http://www.cpan.org/authors/id/R/RO/ROBIN/PadWalker-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.1
+BuildRequires:  perl-devel >= 5.8.1
 BuildRequires:  perl(ExtUtils::MakeMaker)
 
 %description
@@ -42,4 +42,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

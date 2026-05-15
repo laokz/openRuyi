@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Stringified perl data structures, suitable for both printing and eval
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Data-Dumper
-#!RemoteAsset
+#!RemoteAsset:  sha256:e42736890b7dae1b37818d9c5efa1f1fdc52dec04f446a33a4819bf1d4ab5ad3
 Source0:        http://www.cpan.org/authors/id/N/NW/NWCLARK/Data-Dumper-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -41,4 +42,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes Todo
 
 %changelog
-%{?autochangelog}
+%autochangelog

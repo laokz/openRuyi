@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        Math::BigInt::Calc with some XS for more speed
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Math-BigInt-FastCalc
-#!RemoteAsset
+#!RemoteAsset:  sha256:6dfd72e784e612aab46136532a609c0b77a5b0b7854ab837682d64fb1af2a74e
 Source0:        http://www.cpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-FastCalc-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.1
+BuildRequires:  perl-devel >= 5.6.1
 BuildRequires:  perl(Carp) >= 1.22
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Math::BigInt) >= 2.005001
@@ -46,4 +46,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc CHANGES CREDITS README README.md TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

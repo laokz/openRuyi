@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        Encoding and decoding of base64 strings
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/MIME-Base64
-#!RemoteAsset
+#!RemoteAsset:  sha256:77f73d6f7aeb8d33be08b0d8c2617f9b6c77fb7fc45422d507ca8bafe4246017
 Source0:        http://www.cpan.org/authors/id/C/CA/CAPOEIRAB/MIME-Base64-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.0
+BuildRequires:  perl-devel >= 5.6.0
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Spec)
@@ -51,4 +51,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc benchmark benchmark-qp Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

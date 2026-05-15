@@ -11,12 +11,12 @@ Release:        %autorelease
 Summary:        Validate method/function parameters
 License:        Artistic-2.0
 URL:            https://metacpan.org/dist/Params-Validate
-#!RemoteAsset
+#!RemoteAsset:  sha256:1bf2518ef2c4869f91590e219f545c8ef12ed53cf313e0eb5704adf7f1b2961e
 Source0:        http://www.cpan.org/authors/id/D/DR/DROLSKY/Params-Validate-%{version}.tar.gz
 
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.1
+BuildRequires:  perl-devel >= 5.8.1
 BuildRequires:  perl(base)
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Devel::Peek)
@@ -64,4 +64,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md perlcriticrc perltidyrc README.md tidyall.ini TODO weaver.ini
 
 %changelog
-%{?autochangelog}
+%autochangelog

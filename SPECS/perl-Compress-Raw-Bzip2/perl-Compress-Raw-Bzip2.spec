@@ -5,15 +5,16 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           perl-Compress-Raw-Bzip2
-Version:        2.214
+Version:        2.218
 Release:        %autorelease
 Summary:        Low-Level Interface to bzip2 compression library
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Compress-Raw-Bzip2
-#!RemoteAsset
+#!RemoteAsset:  sha256:89153e6a2ebda52349493b074fa4b7549ff1f9053de7613c18a5e05c5b415fa8
 Source0:        http://www.cpan.org/authors/id/P/PM/PMQS/Compress-Raw-Bzip2-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -39,4 +40,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

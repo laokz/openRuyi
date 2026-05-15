@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Interface to the GNOME libxslt library
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/XML-LibXSLT
-#!RemoteAsset
+#!RemoteAsset:  sha256:7caa5aee72f53be59d8b84eecb6864a07c612a12ea6b27d5c706960edcd54587
 Source0:        http://www.cpan.org/authors/id/S/SH/SHLOMIF/XML-LibXSLT-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.14.0
+BuildRequires:  perl-devel >= 5.14.0
 BuildRequires:  perl(Encode)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Path) >= 2.06
@@ -53,4 +53,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

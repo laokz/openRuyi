@@ -11,12 +11,12 @@ Release:        %autorelease
 Summary:        B::COW additional B helpers to check COW status
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/B-COW
-#!RemoteAsset
+#!RemoteAsset:  sha256:1290daf227e8b09889a31cf182e29106f1cf9f1a4e9bf7752f9de92ed1158b44
 Source0:        http://www.cpan.org/authors/id/A/AT/ATOOMIC/B-COW-%{version}.tar.gz
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.0
+BuildRequires:  perl-devel >= 5.8.0
 BuildRequires:  perl(Devel::Peek)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Spec)
@@ -44,4 +44,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

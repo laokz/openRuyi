@@ -6,14 +6,15 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           perl-Clone
-Version:        0.47
+Version:        0.50
 Release:        %autorelease
 Summary:        Recursively copy Perl datatypes
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Clone
-#!RemoteAsset
+#!RemoteAsset:  sha256:f9732a4a857974db30905233589113003301b585b0cecda29a21cfba5bb014f9
 Source0:        http://www.cpan.org/authors/id/A/AT/ATOOMIC/Clone-%{version}.tar.gz
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(B::COW) >= 0.004
@@ -42,4 +43,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README.md
 
 %changelog
-%{?autochangelog}
+%autochangelog

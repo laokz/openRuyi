@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Tools to test taintedness
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Test-Taint
-#!RemoteAsset
+#!RemoteAsset:  sha256:5d594d4257352c93785024c63aa0a7b73d912ceca9611cd975ce83aab021a97d
 Source0:        http://www.cpan.org/authors/id/P/PE/PETDANCE/Test-Taint-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -49,4 +50,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes
 
 %changelog
-%{?autochangelog}
+%autochangelog

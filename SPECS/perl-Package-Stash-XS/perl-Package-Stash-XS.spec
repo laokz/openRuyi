@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Faster and more correct implementation of the Package::Stash API
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Package-Stash-XS
-#!RemoteAsset
+#!RemoteAsset:  sha256:26bad65c1959c57379b3e139dc776fbec5f702906617ef27cdc293ddf1239231
 Source0:        http://www.cpan.org/authors/id/E/ET/ETHER/Package-Stash-XS-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.1
+BuildRequires:  perl-devel >= 5.8.1
 BuildRequires:  perl(B)
 BuildRequires:  perl(base)
 BuildRequires:  perl(constant)
@@ -55,4 +55,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes CONTRIBUTING README
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        TermReadKey Perl module
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/TermReadKey
-#!RemoteAsset
+#!RemoteAsset:  sha256:5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290
 Source0:        http://www.cpan.org/authors/id/J/JS/JSTOWE/TermReadKey-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -41,4 +42,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

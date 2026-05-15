@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Alias lexical variables
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Devel-LexAlias
-#!RemoteAsset
+#!RemoteAsset:  sha256:5e0ad9d43e266033856e424e104a0009f8e63449e40cd5aba59ad94cb1bcee72
 Source0:        http://www.cpan.org/authors/id/R/RC/RCLAMP/Devel-LexAlias-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::Caller) >= 0.03
@@ -44,4 +45,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes
 
 %changelog
-%{?autochangelog}
+%autochangelog

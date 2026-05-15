@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Generate fast XS accessors without runtime compilation
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Class-XSAccessor
-#!RemoteAsset
+#!RemoteAsset:  sha256:99c56b395f1239af19901f2feeb125d9ecb4e351a0d80daa9529211a4700a6f2
 Source0:        http://www.cpan.org/authors/id/S/SM/SMUELLER/Class-XSAccessor-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.0
+BuildRequires:  perl-devel >= 5.8.0
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
@@ -49,4 +49,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

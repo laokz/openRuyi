@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Traces memory leaks
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Test-LeakTrace
-#!RemoteAsset
+#!RemoteAsset:  sha256:777d64d2938f5ea586300eef97ef03eacb43d4c1853c9c3b1091eb3311467970
 Source0:        http://www.cpan.org/authors/id/L/LE/LEEJO/Test-LeakTrace-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Exporter) >= 5.57
@@ -45,4 +46,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

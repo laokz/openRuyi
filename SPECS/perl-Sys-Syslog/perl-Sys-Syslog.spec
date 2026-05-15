@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Perl interface to the UNIX syslog(3) calls
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Sys-Syslog
-#!RemoteAsset
+#!RemoteAsset:  sha256:ed42a9e5ba04ad4856cc0cb5d38d289c3c5d3764543ec04efafc4af7e3378df8
 Source0:        http://www.cpan.org/authors/id/S/SA/SAPER/Sys-Syslog-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp)
@@ -47,4 +48,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README README.win32
 
 %changelog
-%{?autochangelog}
+%autochangelog

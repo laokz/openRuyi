@@ -11,12 +11,12 @@ Release:        %autorelease
 Summary:        Argument type classification
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Params-Classify
-#!RemoteAsset
+#!RemoteAsset:  sha256:398ec15cd899fcd8bef3db9ea1748bf631f15f6c32be203e475b67df510a5914
 Source0:        http://www.cpan.org/authors/id/Z/ZE/ZEFRAM/Params-Classify-%{version}.tar.gz
 
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.1
+BuildRequires:  perl-devel >= 5.6.1
 BuildRequires:  perl(Devel::CallChecker) >= 0.003
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(Module::Build)
@@ -54,4 +54,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        Binary Search a sorted array with XS routines
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/List-BinarySearch-XS
-#!RemoteAsset
+#!RemoteAsset:  sha256:9ceb9fc3c1fc3418eb8d372be03d566a35dde6df06d55a6096a305891581f4c2
 Source0:        http://www.cpan.org/authors/id/D/DA/DAVIDO/List-BinarySearch-XS-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.0
+BuildRequires:  perl-devel >= 5.8.0
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Test::More) >= 0.98
 
@@ -42,4 +42,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

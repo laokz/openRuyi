@@ -11,12 +11,12 @@ Release:        %autorelease
 Summary:        Custom op checking attached to subroutines
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Devel-CallChecker
-#!RemoteAsset
+#!RemoteAsset:  sha256:7a46caef9c48908f00fe8985dcecc4ec55f42e6c4efaafce9dbdaf9d45a37bc4
 Source0:        http://www.cpan.org/authors/id/Z/ZE/ZEFRAM/Devel-CallChecker-%{version}.tar.gz
 
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.0
+BuildRequires:  perl-devel >= 5.6.0
 BuildRequires:  perl(DynaLoader)
 BuildRequires:  perl(DynaLoader::Functions) >= 0.001
 BuildRequires:  perl(Exporter)
@@ -60,4 +60,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

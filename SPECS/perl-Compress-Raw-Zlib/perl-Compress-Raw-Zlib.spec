@@ -5,15 +5,16 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           perl-Compress-Raw-Zlib
-Version:        2.214
+Version:        2.218
 Release:        %autorelease
 Summary:        Low-Level Interface to zlib or zlib-ng compression library
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Compress-Raw-Zlib
-#!RemoteAsset
+#!RemoteAsset:  sha256:7a3f042792f3a24bf44281a280001d45ce4b6a1db302a8bd554bdf1721bdd195
 Source0:        http://www.cpan.org/authors/id/P/PM/PMQS/Compress-Raw-Zlib-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -40,4 +41,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

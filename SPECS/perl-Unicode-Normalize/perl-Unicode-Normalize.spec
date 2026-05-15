@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        Unicode Normalization Forms
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Unicode-Normalize
-#!RemoteAsset
+#!RemoteAsset:  sha256:bade6f74e89b95a4b2226a0965ac1218e0e4eeaa0edb4b30ee7aac9d5dae773f
 Source0:        http://www.cpan.org/authors/id/K/KH/KHW/Unicode-Normalize-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.0
+BuildRequires:  perl-devel >= 5.6.0
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(constant)
 BuildRequires:  perl(DynaLoader)
@@ -48,4 +48,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes mkheader README
 
 %changelog
-%{?autochangelog}
+%autochangelog

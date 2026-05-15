@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        Perl/Pollution/Portability
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Devel-PPPort
-#!RemoteAsset
+#!RemoteAsset:  sha256:5290d5bb84cde9e9e61113a20c67b5d47267eb8e65a119a8a248cc96aac0badb
 Source0:        http://www.cpan.org/authors/id/A/AT/ATOOMIC/Devel-PPPort-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -44,4 +45,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes HACKERS README soak TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

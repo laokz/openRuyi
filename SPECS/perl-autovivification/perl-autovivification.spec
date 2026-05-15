@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Lexically disable autovivification
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/autovivification
-#!RemoteAsset
+#!RemoteAsset:  sha256:2d99975685242980d0a9904f639144c059d6ece15899efde4acb742d3253f105
 Source0:        http://www.cpan.org/authors/id/V/VP/VPIT/autovivification-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.3
+BuildRequires:  perl-devel >= 5.8.3
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -52,4 +52,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

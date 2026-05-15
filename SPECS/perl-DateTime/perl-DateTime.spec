@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Date and time object for Perl
 License:        Artistic-2.0
 URL:            https://metacpan.org/dist/DateTime
-#!RemoteAsset
+#!RemoteAsset:  sha256:afabd686fb83d3ebf49ee453974f9122f3eec9b25ff8d2ddf4f12de92af1e5e2
 Source0:        http://www.cpan.org/authors/id/D/DR/DROLSKY/DateTime-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.4
+BuildRequires:  perl-devel >= 5.8.4
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
 BuildRequires:  perl(CPAN::Meta::Requirements)
@@ -81,4 +81,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS leaptab.txt perlcriticrc perltidyrc precious.toml README.md TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Self-contained RDBMS in a DBI Driver
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/DBD-SQLite
-#!RemoteAsset
+#!RemoteAsset:  sha256:0a33a7a935be63371071dbe600cfaefa67cd971b67580a917bbf6ebaf723c584
 Source0:        http://www.cpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBI) >= 1.57
@@ -47,4 +48,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes constants.inc dbdimp_tokenizer.inc dbdimp_virtual_table.inc README
 
 %changelog
-%{?autochangelog}
+%autochangelog

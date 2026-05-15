@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Extra sets of Chinese encodings
 License:        MIT
 URL:            https://metacpan.org/dist/Encode-HanExtra
-#!RemoteAsset
+#!RemoteAsset:  sha256:1fd4b06cada70858003af153f94c863b3b95f2e3d03ba18d0451a81d51db443a
 Source0:        http://www.cpan.org/authors/id/A/AU/AUDREYT/Encode-HanExtra-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.7.3
+BuildRequires:  perl-devel >= 5.7.3
 BuildRequires:  perl(Encode) >= 1.41
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(inc::Module::Install)
@@ -46,4 +46,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

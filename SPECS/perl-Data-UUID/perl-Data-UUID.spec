@@ -15,10 +15,11 @@ Summary:        Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 # https://github.com/bleargh45/Data-UUID/issues/26
 License:        HP-1989 AND (GPL-1.0-or-later OR Artistic-1.0-Perl)
 URL:            https://metacpan.org/dist/Data-UUID
-#!RemoteAsset
+#!RemoteAsset:  sha256:95bda7276265f57bc48ffdeddec5ef28cd6f765e3a183757fa5f09f0ce6b98ac
 Source0:        http://www.cpan.org/authors/id/G/GT/GTERMARS/Data-UUID-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::MD5)
@@ -47,4 +48,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

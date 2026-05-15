@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        Isolated String helpers from B
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/XString
-#!RemoteAsset
+#!RemoteAsset:  sha256:f247f55c19aee6ba4a1ae73c0804259452e02ea85a9be07f8acf700a5138f884
 Source0:        http://www.cpan.org/authors/id/A/AT/ATOOMIC/XString-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.0
+BuildRequires:  perl-devel >= 5.8.0
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(File::Temp)
@@ -44,4 +44,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README tidyall.ini weaver.ini
 
 %changelog
-%{?autochangelog}
+%autochangelog

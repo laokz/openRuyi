@@ -11,13 +11,13 @@ Release:        %autorelease
 Summary:        HTML parser class
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/HTML-Parser
-#!RemoteAsset
+#!RemoteAsset:  sha256:7278ce9791256132b26a71a5719451844704bb9674b58302c3486df43584f8c0
 Source0:        http://www.cpan.org/authors/id/O/OA/OALDERS/HTML-Parser-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.8.0
+BuildRequires:  perl-devel >= 5.8.0
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Exporter)
@@ -56,4 +56,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes entities.html mkhctype mkpfunc README TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

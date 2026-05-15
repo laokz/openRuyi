@@ -10,10 +10,11 @@ Release:        %autorelease
 Summary:        System V IPC constants and system calls
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/IPC-SysV
-#!RemoteAsset
+#!RemoteAsset:  sha256:1897541c74d548fd1007eb6c07f3419d3c7575d8056a62b5ba5270a2166d2dbd
 Source0:        http://www.cpan.org/authors/id/M/MH/MHX/IPC-SysV-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -43,4 +44,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes const-c.inc const-xs.inc README TODO
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        EucJP-ascii - An eucJP-open mapping
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Encode-EUCJPASCII
-#!RemoteAsset
+#!RemoteAsset:  sha256:f998d34d55fd9c82cf910786a0448d1edfa60bf68e2c2306724ca67c629de861
 Source0:        http://www.cpan.org/authors/id/N/NE/NEZUMI/Encode-EUCJPASCII-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Encode) >= 1.41
@@ -44,4 +45,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

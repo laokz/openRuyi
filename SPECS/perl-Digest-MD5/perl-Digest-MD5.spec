@@ -10,13 +10,13 @@ Release:        %autorelease
 Summary:        Perl interface to the MD5 Algorithm
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Digest-MD5
-#!RemoteAsset
+#!RemoteAsset:  sha256:b5ecba079bd5907d52663a659cd977b6247526abe6aed9b818d083dd99af77d2
 Source0:        http://www.cpan.org/authors/id/T/TO/TODDR/Digest-MD5-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
-BuildRequires:  perl >= 5.6.0
+BuildRequires:  perl-devel >= 5.6.0
 BuildRequires:  perl(Digest::base) >= 1.00
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(XSLoader)
@@ -46,4 +46,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README rfc1321.txt
 
 %changelog
-%{?autochangelog}
+%autochangelog

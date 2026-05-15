@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        JIS X 0212 (aka JIS 2000) Encodings
 License:        Artistic-1.0
 URL:            https://metacpan.org/dist/Encode-JIS2K
-#!RemoteAsset
+#!RemoteAsset:  sha256:022f1f3d6869742b3718c27bfcca6f7c96aceffac0a2267d140bbf653d7c0ac2
 Source0:        http://www.cpan.org/authors/id/D/DA/DANKOGAI/Encode-JIS2K-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Encode) >= 1.41
@@ -42,4 +43,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

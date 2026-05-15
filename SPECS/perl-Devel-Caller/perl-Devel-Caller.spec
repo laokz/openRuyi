@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Meatier versions of caller
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Devel-Caller
-#!RemoteAsset
+#!RemoteAsset:  sha256:b679a2b18034b0b720de82c3708724c364b10a6ca164cbc67cdc3af283f3503f
 Source0:        http://www.cpan.org/authors/id/R/RC/RCLAMP/Devel-Caller-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -43,4 +44,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes
 
 %changelog
-%{?autochangelog}
+%autochangelog

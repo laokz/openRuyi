@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        JSON serialising/deserialising, done correctly and fast
 License:        CHECK(Distributable)
 URL:            https://metacpan.org/dist/JSON-XS
-#!RemoteAsset
+#!RemoteAsset:  sha256:8eff1e9f304c5625b59ab7b42258415f6d3e3681c1ddab6b725518a018a7f5e0
 Source0:        http://www.cpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(common::sense)
@@ -44,4 +45,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc Changes README
 
 %changelog
-%{?autochangelog}
+%autochangelog

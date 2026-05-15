@@ -11,10 +11,11 @@ Release:        %autorelease
 Summary:        Simple, compact and correct param-checking functions
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Params-Util
-#!RemoteAsset
+#!RemoteAsset:  sha256:499bb1b482db24fda277a51525596ad092c2bd51dd508fa8fec2e9f849097402
 Source0:        http://www.cpan.org/authors/id/R/RE/REHSACK/Params-Util-%{version}.tar.gz
 
 BuildRequires:  make
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -48,4 +49,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %doc ARTISTIC-1.0 Changes GPL-1 README.md
 
 %changelog
-%{?autochangelog}
+%autochangelog

@@ -11,9 +11,10 @@ Release:        %autorelease
 Summary:        Interface to read and parse BibTeX files
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Text-BibTeX
-#!RemoteAsset
+#!RemoteAsset:  sha256:3f0113cf8fe71dc7484636dc8e2a581637ecbcc82d0be29bbd46d0bf3f8cdb37
 Source0:        http://www.cpan.org/authors/id/A/AM/AMBS/Text-BibTeX-%{version}.tar.gz
 
+BuildRequires:  perl-devel
 BuildRequires:  perl-rpm-packaging
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.06
@@ -56,4 +57,4 @@ find %{buildroot} -type f -name '*.bs' -size 0 -exec rm -f {} \;
 %{_libdir}/libbtparse.so
 
 %changelog
-%{?autochangelog}
+%autochangelog
