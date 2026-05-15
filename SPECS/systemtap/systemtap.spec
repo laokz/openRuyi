@@ -10,16 +10,14 @@
 %bcond dyninst 0
 
 Name:           systemtap
-Version:        5.3
+Version:        5.5
 Release:        %autorelease
 Summary:        Programmable system-wide instrumentation system
 License:        GPL-2.0-or-later
 URL:            https://sourceware.org/systemtap/
 VCS:            git:https://sourceware.org/git/systemtap.git
-#!RemoteAsset:  sha256:966a360fb73a4b65a8d0b51b389577b3c4f92a327e84aae58682103e8c65a69a
+#!RemoteAsset:  sha256:980e58887a284097b9d4c6ae6382b75787573131c27e3875c0fc94bceb8c61a8
 Source0:        https://sourceware.org/%{name}/ftp/releases/%{name}-%{version}.tar.gz
-#!RemoteAsset:  sha256:81bfd0b93d864f973942bab687713d58dd9b117a354ccfaef7747f058ba01983
-Source1:        https://sourceware.org/%{name}/ftp/releases/%{name}-%{version}.tar.gz.asc
 BuildSystem:    autotools
 
 BuildOption(conf):  --disable-docs
