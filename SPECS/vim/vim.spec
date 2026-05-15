@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 %define package_version 9.2
-%define patchlevel 0390
+%define patchlevel 0481
 
 %define vimdir vim92
 
@@ -18,7 +18,7 @@ Summary:        A popular VI editor derivative with enhanced functionality
 License:        Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0
 URL:            https://www.vim.org/
 VCS:            git:https://github.com/vim/vim
-#!RemoteAsset:  sha256:18f5abda9cae11359cc9625370fc142bdfbefbbc4c07aad55d21dca5d5bdbdf2
+#!RemoteAsset:  sha256:dc16fba85330be92927c62826951227231c181982d095d57117c50a20f7d1d00
 Source0:        https://github.com/vim/vim/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildSystem:    autotools
 
@@ -55,16 +55,18 @@ rm -rf %{buildroot}%{_mandir}/da.ISO8859-1/
 rm -rf %{buildroot}%{_mandir}/de.ISO8859-1/
 rm -rf %{buildroot}%{_mandir}/tr.ISO8859-9/
 rm -rf %{buildroot}%{_mandir}/tr.UTF-8/
+ln -s vim %{buildroot}%{_bindir}/vi
 
 %find_lang %{name} --all-name --with-man --generate-subpackages
 
-# Nothing to check.
+# Disable tests.
 %check
 
 %files
 %license %{_datadir}/%{name}/%{vimdir}/LICENSE
 %doc %{_datadir}/%{name}/%{vimdir}/README.txt
 %{_bindir}/vim
+%{_bindir}/vi
 %{_bindir}/rvim
 %{_bindir}/vimdiff
 %{_bindir}/vimtutor
