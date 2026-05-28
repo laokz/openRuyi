@@ -7,12 +7,12 @@
 %global srcname numpy
 
 Name:           python-%{srcname}
-Version:        2.4.0
+Version:        2.4.6
 Release:        %autorelease
 Summary:        NumPy: array processing for numbers, strings, records, and objects
 License:        BSD-3-Clause
 URL:            https://github.com/numpy/numpy
-#!RemoteAsset:  sha256:6e504f7b16118198f138ef31ba24d985b124c2c469fe8467007cf30fd992f934
+#!RemoteAsset:  sha256:f3a3570c4a2a16746ac2c31a7c7c7b0c186b95ce902e33db6f28094ed7387dda
 Source:         https://files.pythonhosted.org/packages/source/n/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
