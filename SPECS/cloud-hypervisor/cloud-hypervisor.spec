@@ -35,14 +35,11 @@ Requires: bash
 Requires: glibc
 Requires: libcap
 
-# TODO: Use rva23 rust toolchain to compile
 %ifarch x86_64
-%define rust_def_target x86_64-unknown-linux-gnu
 %define cargo_pkg_feature_opts --no-default-features --features "mshv,kvm" -p cloud-hypervisor
 %endif
 
 %ifarch riscv64
-%define rust_def_target riscv64gc-unknown-linux-gnu
 %define cargo_pkg_feature_opts --no-default-features --features "kvm" -p cloud-hypervisor
 %endif
 
@@ -72,19 +69,19 @@ if [[ $? -ne 0 ]]; then
 fi
 
 export OPENSSL_NO_VENDOR=1
-cargo build --release --target=%{rust_def_target} %{cargo_pkg_feature_opts} %{cargo_offline}
-cargo build --release --target=%{rust_def_target} --package vhost_user_net %{cargo_offline}
-cargo build --release --target=%{rust_def_target} --package vhost_user_block %{cargo_offline}
+cargo build --release %{cargo_pkg_feature_opts} %{cargo_offline}
+cargo build --release --package vhost_user_net %{cargo_offline}
+cargo build --release --package vhost_user_block %{cargo_offline}
 
 %install
 rm -rf %{buildroot}
 install -d %{buildroot}%{_bindir}
-install -D -m755  ./target/%{rust_def_target}/release/cloud-hypervisor %{buildroot}%{_bindir}
-install -D -m755  ./target/%{rust_def_target}/release/ch-remote %{buildroot}%{_bindir}
+install -D -m755  ./target/release/cloud-hypervisor %{buildroot}%{_bindir}
+install -D -m755  ./target/release/ch-remote %{buildroot}%{_bindir}
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_libdir}/cloud-hypervisor
-install -D -m755 target/%{rust_def_target}/release/vhost_user_block %{buildroot}%{_libdir}/cloud-hypervisor
-install -D -m755 target/%{rust_def_target}/release/vhost_user_net %{buildroot}%{_libdir}/cloud-hypervisor
+install -D -m755 target/release/vhost_user_block %{buildroot}%{_libdir}/cloud-hypervisor
+install -D -m755 target/release/vhost_user_net %{buildroot}%{_libdir}/cloud-hypervisor
 
 %files
 %defattr(-,root,root,-)
