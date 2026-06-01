@@ -14,7 +14,11 @@
 %global rust_arch x86_64-unknown-linux-gnu
 %endif
 %ifarch riscv64
+%if "%{openruyi_riscv_arch}" == "-march=rva23u64"
+%global rust_arch riscv64a23-unknown-linux-gnu
+%else
 %global rust_arch riscv64gc-unknown-linux-gnu
+%endif
 %endif
 
 # We might use rust-rv64gc to bootstrap rust-rva23u64.
@@ -104,7 +108,7 @@ export %{rust_env}
 # Skip these 2 tests due to no network access.
 ./x.py test --no-fail-fast --target %{rust_arch} --host %{rust_arch} cargo \
             --test-args '--skip net_err_suggests_fetch_with_cli --skip publish_to_crates_io_warns' || :
-./x.py test --no-fail-fast --target %{rust_arch} --host %{rust_arch} clippy || :
+./x.py test --no-fail-fast --target %{rust_arch} --host %{rust_arch} clippy
 ./x.py test --target %{rust_arch} --host %{rust_arch} rust-analyzer
 ./x.py test --target %{rust_arch} --host %{rust_arch} rustfmt
 
