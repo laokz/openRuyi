@@ -7,12 +7,12 @@
 %global srcname sudachipy
 
 Name:           python-sudachipy
-Version:        0.6.10
+Version:        0.6.11
 Release:        %autorelease
 Summary:        A Japanese morphological analyzer
 License:        Apache-2.0
 URL:            https://github.com/WorksApplications/sudachi.rs/
-#!RemoteAsset:  sha256:b8910a4610de98b2c3cb6dc3362fea93e3ba5059f1eb445a68baa9585278f31b
+#!RemoteAsset:  sha256:4f03310fd3fc779b3000f49395c939d18a30081632d3cb14488426f7c07cc526
 Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{srcname}-%{version}.tar.gz
 #!RemoteAsset:  sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 Source1:        https://raw.githubusercontent.com/WorksApplications/sudachi.rs/v%{version}/LICENSE
@@ -28,8 +28,8 @@ BuildRequires:  python3dist(pip)
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(setuptools-rust)
 BuildRequires:  python3dist(wheel)
-BuildRequires:  crate(pyo3-0.23/extension-module) >= 0.23.5
-BuildRequires:  crate(pyo3-macros-0.23) >= 0.23.5
+BuildRequires:  crate(pyo3-0.27/extension-module) >= 0.27.2
+BuildRequires:  crate(pyo3-macros-0.27) >= 0.27.2
 BuildRequires:  crate(scopeguard-1.0) >= 1.2.0
 BuildRequires:  crate(thread-local-1.0) >= 1.1.9
 BuildRequires:  crate(indoc-2.0) >= 2.0.7
@@ -74,6 +74,9 @@ replace-with = "system-registry"
 [source.system-registry]
 directory = "/usr/share/cargo/registry"
 EOF
+
+# Remove stale Cargo.lock
+rm -f Cargo.lock
 
 %files -f %{pyproject_files}
 %doc README.md
