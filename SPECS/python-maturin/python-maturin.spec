@@ -7,14 +7,14 @@
 %global srcname maturin
 
 Name:           python-%{srcname}
-Version:        1.9.6
+Version:        1.13.3
 Release:        %autorelease
 Summary:        Build and publish Rust crates as Python packages
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/PyO3/maturin
-#!RemoteAsset:  sha256:2c2ae37144811d365509889ed7220b0598487f1278c2441829c3abf56cc6324a
+#!RemoteAsset:  sha256:771e1e9e71a278e56db01552e0d1acfd1464259f9575b6e72842f893cd299079
 Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
-#!RemoteAsset:  sha256:1f1d31f07dc2715e7d3eef9f2c4875690f5e40d7b8e7de4aff778a759d0b9414
+#!RemoteAsset:  sha256:54efe94ac7fb7b28fb7c8c97ff6d77f854295d782c43e3f033e61617df1e1b5d
 Source1:        https://github.com/TakoPack/python-%{srcname}-vendor/releases/download/vendor-%{version}/%{srcname}-%{version}-vendor.tar.bz2
 BuildSystem:    pyproject
 
