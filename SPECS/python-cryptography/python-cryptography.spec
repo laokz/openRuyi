@@ -20,6 +20,8 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{srcname}/%{sr
 Source1:        https://github.com/TakoPack/%{name}-vendor/releases/download/vendor-%{version}/%{srcname}-%{version}-vendor.tar.bz2
 BuildSystem:    pyproject
 
+Patch0:         0001-Fix-installing-stray-files-into-site-packages.patch
+
 BuildOption(prep):  -a1
 BuildOption(install):  %{srcname}
 
