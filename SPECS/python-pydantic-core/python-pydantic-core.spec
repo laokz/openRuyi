@@ -32,6 +32,7 @@ BuildRequires:  python3dist(wheel)
 BuildRequires:  python3dist(typing-extensions)
 BuildRequires:  python3dist(puccinialin)
 BuildRequires:  python3dist(maturin)
+BuildRequires:  crate(target-lexicon-0.13/default) >= 0.13.3
 
 Provides:       python3-%{srcname} = %{version}-%{release}
 Provides:       python3-%{srcname}%{?_isa} = %{version}-%{release}
@@ -50,6 +51,11 @@ replace-with = "vendored-sources"
 [source.vendored-sources]
 directory = "vendor"
 EOF
+
+# Substitute target-lexicon with our version to support rust rva23 target.
+rm -rf vendor/target-lexicon/{*,.*}
+cp -rf /usr/share/cargo/registry/target-lexicon-0.13*/{*,.*} vendor/target-lexicon/
+rm -f Cargo.lock
 
 %generate_buildrequires
 %pyproject_buildrequires
