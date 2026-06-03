@@ -1,0 +1,43 @@
+--- a/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py	2026-05-21 00:35:02.000000000 +0000
++++ b/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py	2026-06-03 05:57:45.682798799 +0000
+@@ -1707,7 +1707,7 @@
+                 "riscv64gc-unknown-freebsd",
+                 "riscv64gc-unknown-fuchsia",
+                 "riscv64gc-unknown-hermit",
+-                "riscv64gc-unknown-linux-gnu",
++                "riscv64a23-unknown-linux-gnu",
+                 "riscv64gc-unknown-linux-musl",
+                 "riscv64gc-unknown-netbsd",
+                 "riscv64gc-unknown-none-elf",
+--- a/build/autoconf/config.guess	2026-05-21 00:34:53.000000000 +0000
++++ b/build/autoconf/config.guess	2026-06-03 11:25:10.315075662 +0000
+@@ -1172,7 +1172,7 @@
+ 	GUESS=powerpcle-unknown-linux-$LIBC
+ 	;;
+     riscv32:Linux:*:* | riscv32be:Linux:*:* | riscv64:Linux:*:* | riscv64be:Linux:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
++	GUESS=${UNAME_MACHINE}a23-unknown-linux-$LIBC
+ 	;;
+     s390:Linux:*:* | s390x:Linux:*:*)
+ 	GUESS=$UNAME_MACHINE-ibm-linux-$LIBC
+--- a/build/autoconf/config.sub	2026-05-21 00:34:53.000000000 +0000
++++ b/build/autoconf/config.sub	2026-06-03 11:53:51.202533775 +0000
+@@ -1397,6 +1397,7 @@
+ 			| riscv32 \
+ 			| riscv32be \
+ 			| riscv64 \
++			| riscv64a23 \
+ 			| riscv64be \
+ 			| rl78 \
+ 			| romp \
+--- a/build/moz.configure/init.configure	2026-05-21 00:34:54.000000000 +0000
++++ b/build/moz.configure/init.configure	2026-06-03 13:25:50.097099598 +0000
+@@ -576,7 +576,7 @@
+     elif cpu.startswith("aarch64"):
+         canonical_cpu = "aarch64"
+         endianness = "little"
+-    elif cpu in ("riscv64", "riscv64gc"):
++    elif cpu in ("riscv64", "riscv64gc", "riscv64a23"):
+         canonical_cpu = "riscv64"
+         endianness = "little"
+     elif cpu.startswith("loongarch64"):

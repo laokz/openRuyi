@@ -237,6 +237,7 @@ Source202:      firefox.js
 Source203:      distribution.ini.in
 Source204:      firefox.xml
 Source205:      run-wayland-compositor.sh
+Patch0: z.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  autoconf
