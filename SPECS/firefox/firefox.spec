@@ -307,6 +307,7 @@ Requires:       ffmpeg
 2001-riscv64-enable-gles-rendering.patch
 # https://phabricator.services.mozilla.com/D301784
 2002-riscv64-libyuv-add-RVV-sources-to-build.patch
+2003-blindly-set-rust-rva23-target-when-needed.patch
 
 %description
 Mozilla Firefox is a free, open-source web browser developed by
