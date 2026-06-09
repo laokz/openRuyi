@@ -53,6 +53,10 @@ BuildRequires:  crate(hf-hub-0.4/ureq) = 0.4.1
 BuildRequires:  crate(hf-hub-0.4/rustls-tls) = 0.4.1
 BuildRequires:  crate(aws-lc-sys-0.41) = 0.41.0
 BuildRequires:  crate(aws-lc-rs-1.0) = 1.17.0
+# TODO: Remove this when crate(aws-lc-sys) has riscv64a23-unknown-linux-gnu support.
+%if "%_repository" == "riscv64"
+BuildRequires:  cmake
+%endif
 
 Provides:       python3-%{srcname} = %{version}-%{release}
 Provides:       python3-%{srcname}%{?_isa} = %{version}-%{release}
