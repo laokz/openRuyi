@@ -30,8 +30,12 @@ BuildRequires:  perl(Module::Build)
 Perl programs can use the SGMLSpm module to help convert SGML, HTML or XML
 documents into new formats.
 
+%install -a
+ln -s sgmlspl.pl %{buildroot}%{_bindir}/sgmlspl
+
 %files -f %{name}.files
 %doc BUGS ChangeLog DOC elisp MYMETA.yml README script TODO
+%{_bindir}/sgmlspl
 
 %changelog
 %autochangelog
