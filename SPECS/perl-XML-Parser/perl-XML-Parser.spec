@@ -29,6 +29,7 @@ BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(warnings)
 BuildRequires:  perl(File::ShareDir::Install)
+Requires:       perl(File::ShareDir)
 
 %description
 This module provides ways to parse XML documents. It is built on top of
