@@ -11,17 +11,14 @@ Release:        %autorelease
 Summary:        The Vorbis General Audio Compression Codec
 License:        BSD-3-Clause
 URL:            https://github.com/xiph/vorbis
-#!RemoteAsset
+#!RemoteAsset:  sha256:270c76933d0934e42c5ee0a54a36280e2d87af1de3cc3e584806357e237afd13
 Source:         https://github.com/xiph/vorbis/archive/refs/tags/v%{version}.tar.gz
-BuildSystem:    autotools
+BuildSystem:    cmake
 
-BuildOption(conf):  --disable-static
+BuildOption(conf):  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 BuildRequires:  gcc
-BuildRequires:  automake
-BuildRequires:  autoconf
-BuildRequires:  libtool
-BuildRequires:  make
+BuildRequires:  cmake
 BuildRequires:  pkgconfig(ogg)
 
 %description
@@ -37,11 +34,8 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 This package contains the header files, libraries, and documentation
 needed to develop applications with Ogg Vorbis.
 
-%conf -p
-./autogen.sh
-
 %install -a
-rm -f %{buildroot}%{_docdir}/%{name}-%{version}/doxygen-build.stamp
+install -D -p -m 0644 ./vorbis.m4 %{buildroot}%{_datadir}/aclocal/vorbis.m4
 
 %files
 %doc AUTHORS
@@ -51,7 +45,6 @@ rm -f %{buildroot}%{_docdir}/%{name}-%{version}/doxygen-build.stamp
 %{_libdir}/libvorbisenc.so.*
 
 %files devel
-%doc %{_docdir}/libvorbis-%{version}
 %{_includedir}/vorbis
 %{_libdir}/libvorbis.so
 %{_libdir}/libvorbisfile.so
@@ -62,4 +55,4 @@ rm -f %{buildroot}%{_docdir}/%{name}-%{version}/doxygen-build.stamp
 %{_datadir}/aclocal/vorbis.m4
 
 %changelog
-%{?autochangelog}
+%autochangelog
