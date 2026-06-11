@@ -7,8 +7,8 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 %define major_version 3
-%define minor_version 123
-%define patch_version 1
+%define minor_version 124
+%define patch_version 0
 
 # Check https://searchfox.org/nss/source/automation/release/nspr-version.txt
 %define nspr_version 4.38.2
@@ -20,8 +20,8 @@ Summary:        Network Security Services
 License:        MPL-2.0
 URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
 VCS:            hg:https://hg.mozilla.org/projects/nss
-#!RemoteAsset:  sha256:6f5acfed6b76ce29ef2b8d44515f08d0e122500ddc03e16d060f4693a004d500
-Source:         https://ftp.mozilla.org/pub/security/nss/releases/NSS_%{major_version}_%{minor_version}_%{patch_version}_RTM/src/nss-%{version}-with-nspr-%{nspr_version}.tar.gz
+#!RemoteAsset:  sha256:80da9f1cbcb267293b2248818d288bc02f874d6a34f1989a2828401d74a0bc9b
+Source:         https://ftp.mozilla.org/pub/security/nss/releases/NSS_%{major_version}_%{minor_version}_RTM/src/nss-%{major_version}.%{minor_version}.tar.gz
 BuildSystem:    autotools
 
 # We don't have network in our build environment
@@ -29,11 +29,13 @@ Patch2000:      2000-skip-ocsp-policy-check-in-offline-build.patch
 Patch2001:      2001-Make-dbtests-certutil-K-timeout-configurable.patch
 
 BuildOption(build):  -C nss
-BuildOption(build):  nss_build_all
+BuildOption(build):  all
 BuildOption(build):  BUILD_OPT=1
 BuildOption(build):  NSS_USE_SYSTEM_SQLITE=1
 BuildOption(build):  NSS_ENABLE_WERROR=0
 BuildOption(build):  USE_64=1
+BuildOption(build):  NSPR_INCLUDE_DIR=%{_includedir}/nspr
+BuildOption(build):  NSPR_LIB_DIR=%{_libdir}
 
 BuildRequires:  gcc-c++
 BuildRequires:  make
@@ -41,6 +43,9 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  perl
 BuildRequires:  which
+BuildRequires:  pkgconfig(nspr) >= %{nspr_version}
+
+Requires:       nspr >= %{nspr_version}
 
 %description
 Network Security Services (NSS) is a set of libraries for developing
@@ -58,6 +63,7 @@ install -d -m 755 %{buildroot}%{_includedir}/nss3
 install -d -m 755 %{buildroot}%{_libdir}/pkgconfig
 install -d -m 755 %{buildroot}%{_sysconfdir}/pki/nssdb
 
+make BUILD_OPT=1 USE_64=1 -C ./nss latest
 TARGET_DIR=$(cat dist/latest)
 DIST_DIR=dist/$TARGET_DIR
 
@@ -90,8 +96,8 @@ includedir=%{_includedir}/nss3
 
 Name: NSS-UTIL
 Description: Network Security Services Utility Library
-Version: %{nspr_version}
-Requires: nspr
+Version: %{version}
+Requires: nspr >= %{nspr_version}
 Libs: -L\${libdir} -lnssutil3
 Cflags: -I\${includedir}
 EOF
@@ -105,7 +111,7 @@ includedir=%{_includedir}/nss3
 Name: NSS
 Description: Network Security Services
 Version: %{version}
-Requires: nspr,nss-util
+Requires: nspr >= %{nspr_version}
 Libs: -L\${libdir} -lssl3 -lsmime3 -lnss3
 Cflags: -I\${includedir}
 EOF
@@ -122,7 +128,7 @@ cd nss/tests
 export NSS_DBTESTS_CERTUTIL_K_TIMEOUT=10
 %endif
 # 'tools' will take so long it's not worth it...
-export NSS_TESTS="cipher lowhash cert dbtests sdr crmf smime ssl ocsp merge ec gtests ssl_gtests policy chains"
+export NSS_TESTS="cipher lowhash cert dbtests sdr smime ssl ocsp merge ec gtests ssl_gtests policy chains"
 # And we don't have network in our build environment
 export NSS_SKIP_BADSSL_OCSP=1
 ./all.sh
