@@ -58,6 +58,7 @@ Contains libraries used by the gnutls.
 
 %package        devel
 Summary:        Development files for GnuTLS
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 Requires:       %{name}-dane%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig(libtasn1)
