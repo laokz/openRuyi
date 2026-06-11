@@ -33,6 +33,8 @@ Patch3:         0004-riscv-sandbox.patch
 Patch4:         0005-riscv-v8.patch
 Patch5:         0006-riscv-enable-v8-webasm.patch
 %endif
+# Based on various upstream commits.
+Patch6:         0007-adapt-chromium-to-gcc16-glibc2.43-and-rvv.patch
 
 BuildOption(conf):  -DCMAKE_TOOLCHAIN_FILE="%{_libdir}/cmake/Qt6/qt.toolchain.cmake"
 BuildOption(conf):  -DFEATURE_webengine_build_gn=ON
@@ -236,7 +238,6 @@ sed -i -e "s|%{version} \${_Qt6WebEngine|%{real_version} \${_Qt6WebEngine|" \
 %{_qt6_translationsdir}/qtwebengine_locales/
 %{_qt6_archdatadir}/sbom/%{qt_module}-%{real_version}.spdx
 %{_qt6_archdatadir}/sbom/qtpdf-%{real_version}.spdx
-%{_qt6_datadir}/resources/qtwebengine_devtools_resources.pak
 %{_qt6_libdir}/libQt6Pdf.so.*
 %{_qt6_libdir}/libQt6PdfQuick.so.*
 %{_qt6_libdir}/libQt6PdfWidgets.so.*
