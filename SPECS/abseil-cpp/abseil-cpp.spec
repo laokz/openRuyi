@@ -8,18 +8,15 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           abseil-cpp
-Version:        20260107.0
+Version:        20260526.0
 Release:        %autorelease
 Summary:        C++ Common Libraries
 License:        Apache-2.0 AND LicenseRef-openRuyi-Public-Domain
 URL:            https://abseil.io
 VCS:            git:https://github.com/abseil/abseil-cpp
-#!RemoteAsset:  sha256:4c124408da902be896a2f368042729655709db5e3004ec99f57e3e14439bc1b2
+#!RemoteAsset:  sha256:6e1aee535473414164bf83e4ebc40240dec71a4701f8a642d906e95bea1aea0c
 Source:         https://github.com/abseil/abseil-cpp/archive/%{version}/abseil-cpp-%{version}.tar.gz
 BuildSystem:    cmake
-
-# Fix std::bind-backed absl::Condition with GCC 16's libstdc++.
-Patch0:         0001-synchronization-accept-general-nullary-functors.patch
 
 BuildRequires:  cmake
 BuildRequires:  ninja
@@ -86,8 +83,12 @@ Provides:       bundled(cctz)
 %description    devel
 Development headers for %{name}
 
+%check -p
+# For the tests, don't depend on system tzdata.
+export TZDIR=%{builddir}/%{name}-%{version}/absl/time/internal/cctz/testdata/zoneinfo
+
 %files
-%global lib_version 2601.0.0
+%global lib_version 2605.0.0
 %license LICENSE
 %doc FAQ.md README.md UPGRADES.md
 # All shared libraries except installed TESTONLY libraries; see the %%files
@@ -173,7 +174,6 @@ Development headers for %{name}
 %{_libdir}/libabsl_strerror.so.%{lib_version}
 %{_libdir}/libabsl_strings.so.%{lib_version}
 %{_libdir}/libabsl_strings_internal.so.%{lib_version}
-%{_libdir}/libabsl_borrowed_fixup_buffer.so.%{lib_version}
 %{_libdir}/libabsl_generic_printer_internal.so.%{lib_version}
 %{_libdir}/libabsl_symbolize.so.%{lib_version}
 %{_libdir}/libabsl_synchronization.so.%{lib_version}
@@ -183,6 +183,9 @@ Development headers for %{name}
 %{_libdir}/libabsl_tracing_internal.so.%{lib_version}
 %{_libdir}/libabsl_utf8_for_code_point.so.%{lib_version}
 %{_libdir}/libabsl_vlog_config_internal.so.%{lib_version}
+%{_libdir}/libabsl_clock_interface.so.%{lib_version}
+%{_libdir}/libabsl_source_location.so.%{lib_version}
+%{_libdir}/libabsl_status_builder.so.%{lib_version}
 
 %files testing
 # TESTONLY libraries (that are actually installed):
@@ -208,6 +211,7 @@ Development headers for %{name}
 %{_libdir}/libabsl_per_thread_sem_test_common.so.%{lib_version}
 # absl/time/CMakeLists.txt
 %{_libdir}/libabsl_time_internal_test_util.so.%{lib_version}
+%{_libdir}/libabsl_simulated_clock.so.%{lib_version}
 
 %files devel
 %{_includedir}/absl
@@ -229,7 +233,6 @@ Development headers for %{name}
 %{_libdir}/pkgconfig/absl_base_internal.pc
 %{_libdir}/pkgconfig/absl_bind_front.pc
 %{_libdir}/pkgconfig/absl_bits.pc
-%{_libdir}/pkgconfig/absl_borrowed_fixup_buffer.pc
 %{_libdir}/pkgconfig/absl_bounded_utf8_length_sequence.pc
 %{_libdir}/pkgconfig/absl_btree.pc
 %{_libdir}/pkgconfig/absl_btree_test_common.pc
@@ -459,6 +462,17 @@ Development headers for %{name}
 %{_libdir}/pkgconfig/absl_vlog_config_internal.pc
 %{_libdir}/pkgconfig/absl_vlog_is_on.pc
 %{_libdir}/pkgconfig/absl_weakly_mixed_integer.pc
+%{_libdir}/pkgconfig/absl_any_span.pc
+%{_libdir}/pkgconfig/absl_bind_back.pc
+%{_libdir}/pkgconfig/absl_clock_interface.pc
+%{_libdir}/pkgconfig/absl_hardening.pc
+%{_libdir}/pkgconfig/absl_internal_optional_ref.pc
+%{_libdir}/pkgconfig/absl_random_mocking_access.pc
+%{_libdir}/pkgconfig/absl_simulated_clock.pc
+%{_libdir}/pkgconfig/absl_source_location.pc
+%{_libdir}/pkgconfig/absl_status_builder.pc
+%{_libdir}/pkgconfig/absl_stringify_stream.pc
+%{_libdir}/pkgconfig/absl_status_macros.pc
 
 %changelog
 %autochangelog
