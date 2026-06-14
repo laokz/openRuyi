@@ -7,12 +7,12 @@
 %global srcname omegaconf
 
 Name:           python-%{srcname}
-Version:        2.3.0
+Version:        2.3.1
 Release:        %autorelease
 Summary:        Flexible Python configuration system
 License:        BSD-3-Clause
 URL:            https://github.com/omry/omegaconf
-#!RemoteAsset:  sha256:d5d4b6d29955cc50ad50c46dc269bcd92c6e00f5f90d23ab5fee7bfca4ba4cc7
+#!RemoteAsset:  sha256:e5e7de64aeebeddaf8e6d3f7a783b32ac2a01c0fbd9c878012caecb891a1f42a
 Source0:        https://files.pythonhosted.org/packages/source/o/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildSystem:    pyproject
