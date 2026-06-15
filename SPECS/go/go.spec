@@ -72,6 +72,7 @@ Requires:       glibc
 %patchlist
 # https://go-review.googlesource.com/c/go/+/732560
 0001-crypto-sha1-provide-optimised-assembly-for-riscv64.patch
+0002-os-use-t.TempDir-in-root_test-tempDirWithUnixSocket.patch
 
 %description
 The Go Programming Language. This package contains the compiler, tools,
