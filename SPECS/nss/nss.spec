@@ -111,7 +111,7 @@ includedir=%{_includedir}/nss3
 Name: NSS
 Description: Network Security Services
 Version: %{version}
-Requires: nspr >= %{nspr_version}
+Requires: nspr >= %{nspr_version}, nss-util
 Libs: -L\${libdir} -lssl3 -lsmime3 -lnss3
 Cflags: -I\${includedir}
 EOF
