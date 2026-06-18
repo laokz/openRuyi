@@ -20,6 +20,8 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildSystem:    pyproject
 
 Patch0:         0001-python-torchvision-ffmpeg8.patch
+# https://github.com/pytorch/vision/pull/9386
+Patch1:         0002-Fix-setup.py-breaks-with-setuptools-82.patch
 Patch2000:      2000-Add-HIP-detect-logic.patch
 
 BuildOption(install):  %{srcname}
