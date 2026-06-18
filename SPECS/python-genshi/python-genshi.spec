@@ -7,12 +7,12 @@
 %global srcname genshi
 
 Name:           python-%{srcname}
-Version:        0.7.10
+Version:        0.7.11
 Release:        %autorelease
 Summary:        Toolkit for stream-based generation of output for the web
 License:        BSD-3-Clause
 URL:            https://genshi.edgewall.org/
-#!RemoteAsset:  sha256:85b0db113625314f0f44f3fe6ef0eb2564d6c34dd2ee5677b495d15142bb4973
+#!RemoteAsset:  sha256:82c4f9bbf4b03be5162a24d6d8e4fdbfe3ed2602d3ebcbf505a33350a379dcb7
 Source:         https://files.pythonhosted.org/packages/source/g/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
