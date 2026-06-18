@@ -19,6 +19,8 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{srcname}/%{sr
 Source1:        https://www.antlr.org/download/antlr4-cpp-runtime-4.13.2-source.zip
 BuildSystem:    pyproject
 
+# Not merged yet. https://github.com/adobe-type-tools/cffsubr/pull/34
+Patch0:         0001-Remove-dry_run-argument-from-copy_file.patch
 # Use offline ANTLR archive and fix old CMake policy settings in bundled AFDKO.
 Patch2000:      2000-afdko-use-antlr4-archive-from-env.patch
 # Avoid pip downloading python-cmake/python-ninja from setup_requires.
