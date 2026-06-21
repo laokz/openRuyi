@@ -17,6 +17,9 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{sr
 BuildArch:      noarch
 BuildSystem:    pyproject
 
+# From upstream and openSUSE.
+Patch1000:      1000-paste-pr105-partial-pkg_resources-remove.patch
+
 BuildOption(install):  %{srcname}
 # Exclude broken modules from import tests
 # Also exclude paste.deploy, paste.auth.open_id & paste.mod
