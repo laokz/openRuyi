@@ -29,6 +29,8 @@ BuildRequires:  go(github.com/go-playground/universal-translator)
 BuildRequires:  go(github.com/leodido/go-urn)
 BuildRequires:  go(golang.org/x/crypto)
 BuildRequires:  go(golang.org/x/text)
+# For tests.
+BuildRequires:  tzdata
 
 Provides:       go(github.com/go-playground/validator/v10) = %{version}
 
