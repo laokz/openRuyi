@@ -69,7 +69,7 @@ RPM macros for PyQt6.
 
 %package        devel
 Summary:        Development files for python3-PyQt6
-Requires:       python3-PyQt6%{?_isa} = %{version}-%{release}
+Requires:       python3-pyqt6%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig(Qt6Core)
 Provides:       python3-PyQt6-devel
 %python_provide python3-PyQt6-devel
@@ -91,7 +91,7 @@ sip-build \
   --dbus=%{_includedir}/dbus-1.0/ \
   --pep484-pyi \
   --qmake-setting 'QMAKE_CFLAGS_RELEASE="%{build_cflags}"' \
-  --qmake-setting 'QMAKE_CXXFLAGS_RELEASE="%{build_cxxflags} `pkg-config --cflags dbus-python` -DQT_NO_INT128"' \
+  --qmake-setting 'QMAKE_CXXFLAGS_RELEASE="%{build_cxxflags} `pkg-config --cflags dbus-python` -DQT_NO_INT128 -std=c++17"' \
   --qmake-setting 'QMAKE_LFLAGS_RELEASE="%{build_ldflags}"'
 
 %install -a
