@@ -7,13 +7,13 @@
 %global srcname sip
 
 Name:           python-%{srcname}
-Version:        6.15.1
+Version:        6.15.3
 Release:        %autorelease
 Summary:        A Python bindings generator for C/C++ libraries
 License:        BSD-2-Clause
 URL:            https://www.riverbankcomputing.com/software/sip/
 VCS:            git:https://github.com/Python-SIP/sip
-#!RemoteAsset:  sha256:dc2e58c1798a74e1b31c28e837339822fe8fa55288ae30e8986eb28100ebca5a
+#!RemoteAsset:  sha256:bb2516983f9f716d321e5157c00d0de0c12422eba73b8f43a44610a0f6622438
 Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
