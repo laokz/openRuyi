@@ -7,13 +7,13 @@
 %global srcname httptools
 
 Name:           python-%{srcname}
-Version:        0.7.1
+Version:        0.8.0
 Release:        %autorelease
 Summary:        A collection of framework independent HTTP protocol utils
 License:        MIT
 URL:            https://github.com/MagicStack/httptools
 VCS:            git:https://github.com/MagicStack/httptools.git
-#!RemoteAsset:  sha256:abd72556974f8e7c74a259655924a717a2365b236c882c3f6f8a45fe94703ac9
+#!RemoteAsset:  sha256:6b2a32f18d97e16e90827d7a819ffa8dbd8cc245fc4e1fa9d1095b54ef4bd999
 Source:         https://files.pythonhosted.org/packages/source/h/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
