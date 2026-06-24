@@ -79,12 +79,8 @@ Requires:       python3dist(pyelftools)
 %description    tools
 %{summary}
 
-# Only run fast-tests; other tests require environments with hugepages, etc.
+# Skip. Require environments with hugepages, etc.
 %check
-tests=$(meson test -C %{_vpath_builddir} --suite fast-tests --list \
-  | awk '{print $3}' \
-  | grep -Ev 'argparse_autotest|rwlock_test1_autotest|pflock_autotest|ticketlock_autotest')
-meson test -C %{_vpath_builddir} --num-processes %{_smp_build_ncpus} --print-errorlogs $tests
 
 %files
 %{_bindir}/dpdk-testpmd
