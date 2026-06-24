@@ -4,19 +4,24 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%global srcname ml_dtypes
+%global srcname ml-dtypes
+%global pypi_name ml_dtypes
 
-Name:           python-ml-dtypes
+Name:           python-%{srcname}
 Version:        0.5.4
 Release:        %autorelease
 Summary:        A stand-alone implementation of several NumPy dtype extensions
 License:        Apache-2.0
 URL:            https://github.com/jax-ml/ml_dtypes
 #!RemoteAsset:  sha256:8ab06a50fb9bf9666dd0fe5dfb4676fa2b0ac0f31ecff72a6c3af8e22c063453
-Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildSystem:    pyproject
 
-BuildOption(install):  -l %{srcname}
+# https://github.com/jax-ml/ml_dtypes/pull/358
+# Upstream not merge the PR, instead, changed the build backend.
+Patch1000:      1000-Update-setuptools-requirement.patch
+
+BuildOption(install):  -l %{pypi_name}
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3dist(pip)
