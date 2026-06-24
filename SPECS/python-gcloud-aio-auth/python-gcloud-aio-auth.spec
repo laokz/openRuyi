@@ -18,8 +18,9 @@ Source0:        https://files.pythonhosted.org/packages/source/g/%{srcname}/%{py
 BuildArch:      noarch
 BuildSystem:    pyproject
 
+Patch0:         0001-chore-deps-bump-maximum-cryptography-version.patch
 # Relax chardet upper bound for distribution-provided newer releases.
-Patch0:         2000-relax-chardet-upper-bound.patch
+Patch2000:      2000-relax-chardet-upper-bound.patch
 
 BuildOption(install):  gcloud
 
