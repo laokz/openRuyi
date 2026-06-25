@@ -44,6 +44,7 @@ of projects using Cobra.
 
 %prep
 %autosetup -n %{_name}-%{version}
+sed -i '3730c t.Errorf("Unexpected directive %d", directive)' completions_test.go
 
 %files
 %license LICENSE*
