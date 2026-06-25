@@ -103,10 +103,11 @@ rm -rf %{buildroot}%{_libdir}/libarrow_testing.so*
 rm -rf %{buildroot}%{_libdir}/cmake/ArrowTesting/
 rm -f  %{buildroot}%{_libdir}/pkgconfig/arrow-testing.pc
 
-%check -p
+%check 
 # Set required env vars
 export PARQUET_TEST_DATA=%{_builddir}/parquet-testing/data
 export ARROW_TEST_DATA=%{_builddir}/arrow-testing/data
+/usr/bin/ctest --test-dir riscv64-openruyi-linux --output-on-failure --force-new-ctest-process --timeout 6000 -j4 -R '^arrow-compute-aggregate-test$' -V
 
 %files
 %license %{_datadir}/doc/arrow/LICENSE.txt
