@@ -22,6 +22,8 @@ BuildOption(prep):  -n %{_name}-%{version}
 
 BuildRequires:  go
 BuildRequires:  go-rpm-macros
+# For tests.
+BuildRequires:  tzdata
 
 Provides:       go(github.com/go-viper/mapstructure/v2) = %{version}
 
