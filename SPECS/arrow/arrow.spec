@@ -7,6 +7,8 @@
 %global parquet_test_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
 %global arrow_test_commit 249079a810caedda6898464003c7ef8a47efeeae
 
+%global toolchain clang
+
 Name:           arrow
 Version:        24.0.0
 Release:        %autorelease
@@ -56,7 +58,7 @@ BuildOption(conf):  -S cpp
 BuildOption(conf):  -DARROW_BUILD_TESTS=ON
 
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  clang
 BuildRequires:  boost-devel
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(xsimd)
@@ -107,12 +109,6 @@ rm -f  %{buildroot}%{_libdir}/pkgconfig/arrow-testing.pc
 # Set required env vars
 export PARQUET_TEST_DATA=%{_builddir}/parquet-testing/data
 export ARROW_TEST_DATA=%{_builddir}/arrow-testing/data
-
-%ifarch riscv64
-# RISC-V FMIN/FMAX choose the non-NaN operand when only one operand is NaN,
-# while these tests expect NaN propagation for floating min/max.
-export GTEST_FILTER='-TestFloatingMinMaxKernel/0.Floats:TestFloatingMinMaxKernel/1.Floats'
-%endif
 
 %files
 %doc %{_datadir}/doc/arrow/NOTICE.txt
