@@ -5,17 +5,14 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           bcc
-Version:        0.36.1
+Version:        0.37.0
 Release:        %autorelease
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 URL:            https://github.com/iovisor/bcc
-#!RemoteAsset:  sha256:3b16f1eb6a5b90a5a68686c0f4195455f1c58da5ae40f004e931c19e98fa8d98
+#!RemoteAsset:  sha256:c89f63bafc688abb4749e901006321e329ab90941433d85f442f9c03bb3c7824
 Source0:        https://github.com/iovisor/bcc/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildSystem:    cmake
-
-# https://github.com/iovisor/bcc/pull/5502
-Patch0:         0001-Fix-variable-sps_cnt-set-but-not-used.patch
 
 BuildOption(conf):  -DREVISION_LAST=%{version}
 BuildOption(conf):  -DREVISION=%{version}
