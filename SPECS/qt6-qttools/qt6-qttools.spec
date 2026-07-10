@@ -28,6 +28,9 @@ BuildSystem:    cmake
 # some install dir is error.
 Patch0:         0001-fix-install-dir.patch
 
+# Take from archlinux.
+Patch2000:      2000-adapt-to-llvm22.patch
+
 BuildOption(conf):  -DQT_BUILD_EXAMPLES:BOOL=ON
 BuildOption(conf):  -DQT_INSTALL_EXAMPLES_SOURCES:BOOL=ON
 
