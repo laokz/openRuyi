@@ -6,14 +6,14 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           libsoup
-Version:        3.6.5
+Version:        3.7.1
 Release:        %autorelease
 Summary:        An HTTP library implementation in C
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/libsoup
 VCS:            git:https://gitlab.gnome.org/GNOME/libsoup
-#!RemoteAsset
-Source:         https://download.gnome.org/sources/libsoup/3.6/libsoup-%{version}.tar.xz
+#!RemoteAsset:  sha256:9c96e11bb91641fe21948013499ca716393c9e9336562f9ff849c41d4edab80e
+Source:         https://download.gnome.org/sources/libsoup/3.7/libsoup-%{version}.tar.xz
 BuildSystem:    meson
 
 BuildOption(conf):  -Ddocs=enabled
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(libzstd)
 
 Recommends:     glib-networking >= 2.70.0
 
@@ -81,4 +82,4 @@ rm -rf %{buildroot}%{_datadir}/locale/*@*
 %{_docdir}/libsoup-3.0/
 
 %changelog
-%{?autochangelog}
+%autochangelog
