@@ -28,6 +28,9 @@ BuildSystem:    cmake
 # some install dir is error.
 Patch0:         0001-fix-install-dir.patch
 
+# https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-tools/-/blob/19e83dd083700044acfec5aa06d19c726ef0ab8d/llvm22.patch
+Patch2000:      2000-adapt-to-llvm22.patch
+
 BuildOption(conf):  -DQT_BUILD_EXAMPLES:BOOL=ON
 BuildOption(conf):  -DQT_INSTALL_EXAMPLES_SOURCES:BOOL=ON
 
