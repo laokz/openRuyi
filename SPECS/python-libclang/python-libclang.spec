@@ -7,13 +7,13 @@
 %global srcname libclang
 
 Name:           python-%{srcname}
-Version:        18.1.1
+Version:        22.1.4.2
 Release:        %autorelease
 Summary:        Python bindings for libclang
 License:        Apache-2.0 WITH LLVM-exception
 URL:            https://github.com/sighingnow/libclang
-#!RemoteAsset:  sha256:a1214966d08d73d971287fc3ead8dfaf82eb07fb197680d8b3859dbbbbf78250
-Source:         https://files.pythonhosted.org/packages/source/l/%{srcname}/%{srcname}-%{version}.tar.gz
+#!RemoteAsset:  sha256:a459faae992ce87be30620e2303df797f1145dcf2a04dd6c2e7b719fc875a1b9
+Source:         https://github.com/kunitoki/libclang-ng/archive/refs/tags/v%{version}.tar.gz#%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildSystem:    pyproject
 
