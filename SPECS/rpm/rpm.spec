@@ -44,6 +44,8 @@ Patch151:       buildroot-symlink.diff
 Patch2000:      2000-fix-rpmuncompress-handle-dir-without-slash.patch
 # We are currently always using the v4 format until we are ready.
 Patch2001:      2001-macros.in-fallback-to-rpmformat-4.patch
+# Support auto update package bundled config.{guess,sub} if they are too old.
+Patch6464:      6464-auto-config-update.diff
 
 BuildRequires:  binutils
 BuildRequires:  bzip2
@@ -171,6 +173,7 @@ rm -rf sqlite
 %patch 25 26 33 60 70 85 102 103 138 150 151
 %patch 2000 -p1
 %patch 2001 -p1
+%patch 6464 -p1
 rm -f m4/libtool.m4
 rm -f m4/lt*.m4
 
