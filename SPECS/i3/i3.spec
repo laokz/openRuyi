@@ -104,7 +104,7 @@ sed -i -e 's/my $parallel = undef;/my $parallel = 1;/' testcases/complete-run.pl
 
 %check
 mkdir -p /tmp/.X11-unix
-chmod 1777 /tmp/.X11-unix
+chmod 1777 /tmp/.X11-unix || :
 mkdir -p i3-test-bin
 cat > i3-test-bin/xvfb-run <<'EOF'
 #!/bin/sh
