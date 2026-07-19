@@ -48,7 +48,7 @@ IRIX compatibility interface is also provided.
 %install -a
 %find_lang %{name} --generate-subpackages
 
-%files
+%files -f %{name}.lang
 %license doc/COPYING*
 %doc doc/CHANGES
 %{_libdir}/libattr.so.1*

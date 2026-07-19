@@ -68,7 +68,7 @@ install -d -m 755 %{buildroot}%{_userunitdir}
 %post
 %udev_rules_update
 
-%files
+%files -f gnupg2.lang
 %{_mandir}/*/[aghsw]*%{?ext_man}
 %license COPYING*
 %doc AUTHORS NEWS THANKS TODO ChangeLog

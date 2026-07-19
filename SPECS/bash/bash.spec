@@ -82,7 +82,7 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 %find_lang %{name} --generate-subpackages
 
-%files
+%files -f %{name}.lang
 %config(noreplace) /etc/skel/.b*
 %license COPYING
 %{_bindir}/bash

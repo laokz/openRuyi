@@ -41,7 +41,7 @@ This package contains files required to build programs with flex libraries.
 %install -a
 %find_lang %{name} --generate-subpackages
 
-%files
+%files -f %{name}.lang
 %license COPYING
 %doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
 %exclude %_docdir/%{name}/COPYING

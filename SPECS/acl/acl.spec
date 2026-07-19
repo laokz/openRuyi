@@ -51,7 +51,7 @@ rm -rvf %{buildroot}/%{_defaultdocdir}/%{name}
 %install -a
 %find_lang %{name} --generate-subpackages
 
-%files
+%files -f %{name}.lang
 %license doc/COPYING doc/COPYING.LGPL
 %doc doc/extensions.txt doc/libacl.txt doc/CHANGES
 %{_docdir}/acl

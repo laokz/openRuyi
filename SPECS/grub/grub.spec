@@ -186,7 +186,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/default/grub
 
 %find_lang %{name} --generate-subpackages
 
-%files
+%files -f %{name}.lang
 %license COPYING
 %dir %{_sysconfdir}/grub.d
 %dir %{_libdir}/%{name}/
