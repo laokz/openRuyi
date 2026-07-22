@@ -205,6 +205,8 @@ Requires:       python3dist(pyyaml)
 %if %{with rocm}
 Requires:       amdsmi
 %endif
+# We need the /usr/lib64/libomp.so symbolic.
+Requires:       libomp
 
 # As convention
 Provides:       pytorch = %{version}-%{release}
