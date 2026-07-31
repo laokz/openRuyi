@@ -5,6 +5,8 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%global _vpath_srcdir build/cmake
+
 %bcond pzstd 0
 
 Name:            zstd
@@ -13,17 +15,21 @@ Release:         %autorelease
 Summary:         A fast lossless compression algorithm
 License:         BSD-3-Clause AND GPL-2.0-only
 URL:             https://github.com/facebook/zstd
-#!RemoteAsset
+#!RemoteAsset:   sha256:37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3
 Source:          https://github.com/facebook/zstd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Buildsystem:     autotools
+Buildsystem:     cmake
+
+%if %{with pzstd}
+BuildOption(conf):  -DZSTD_BUILD_CONTRIB=ON
+%endif
 
 BuildRequires:   gzip
-BuildRequires:   gcc
-BuildRequires:   gcc-c++
+BuildRequires:   cmake
 BuildRequires:   pkgconfig(liblz4)
 BuildRequires:   pkgconfig(liblzma)
 BuildRequires:   pkgconfig(zlib)
 %if %{with pzstd}
+BuildRequires:   gcc-c++
 BuildRequires:   pkgconfig(gtest)
 %endif
 
@@ -46,19 +52,16 @@ Obsoletes:       libzstd-static < %{version}-%{release}
 %description     devel
 This package contains the header files for zstd library.
 
-%conf
-:
-
-%if %{with pzstd}
-%build -a
-%make_build -C contrib/pzstd CXXFLAGS="$RPM_OPT_FLAGS -std=c++11"
-%endif
-
-%install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
+%install -a
 %if %{with pzstd}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
+%endif
+
+%check -a
+%if %{with pzstd}
+# pzstd has no cmake files.
+%make_build -C contrib/pzstd tests check
 %endif
 
 %files
@@ -73,6 +76,7 @@ install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
 %{_libdir}/pkgconfig/libzstd.pc
 %{_libdir}/libzstd.so
 %{_libdir}/libzstd.a
+%{_libdir}/cmake/zstd/
 
 %changelog
-%{?autochangelog}
+%autochangelog
