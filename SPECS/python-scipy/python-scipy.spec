@@ -19,8 +19,8 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
-BuildOption(build):  -Csetup-args=-Dblas=openblas64
-BuildOption(build):  -Csetup-args=-Dlapack=openblas64
+BuildOption(build):  -Csetup-args=-Dblas=openblas
+BuildOption(build):  -Csetup-args=-Dlapack=openblas
 BuildOption(install):  -l %{srcname} -L
 # We don't have python3dist(pooch)
 BuildOption(check):  -e scipy.datasets.tests.test_data
