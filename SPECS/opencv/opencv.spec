@@ -73,6 +73,7 @@ BuildOption(conf):  -DOPENCV_GENERATE_SETUPVARS=OFF
 # Enable Python 3 bindings
 BuildOption(conf):  -DBUILD_opencv_python2=OFF
 BuildOption(conf):  -DBUILD_opencv_python3=ON
+BuildOption(conf):  -DOPENCV_SKIP_PYTHON_LOADER=ON
 
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(python3)
@@ -131,11 +132,11 @@ cd modules/python/package
 %pyproject_buildrequires
 
 %build -a
-cd %{__cmake_builddir}/python_loader/
+cd modules/python/package/
 %pyproject_wheel
 
 %install -a
-cd %{__cmake_builddir}/python_loader/
+cd modules/python/package/
 %pyproject_install
 %pyproject_save_files cv2
 
@@ -163,7 +164,7 @@ cd %{__cmake_builddir}/python_loader/
 
 %files -n python-opencv-python
 %{python3_sitelib}/opencv*.dist-info
-%{python3_sitelib}/cv2
+%{python3_sitelib}/cv2*
 
 %changelog
 %autochangelog
