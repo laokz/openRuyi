@@ -17,6 +17,8 @@ VCS:            git:https://github.com/PCRE2Project/pcre2.git
 Source0:        https://github.com/PCRE2Project/pcre2/releases/download/pcre2-%{version}/pcre2-%{version}.tar.bz2
 BuildSystem:    autotools
 
+Patch0:         0001-pcre2test-allow-using-dynamically-allocated-buffers-and.patch
+
 BuildOption(conf):  --enable-jit
 BuildOption(conf):  --enable-pcre2-16
 BuildOption(conf):  --enable-pcre2-32
