@@ -50,6 +50,9 @@ for compiling applications that use the PCRE2 library.
 %conf -p
 autoreconf -fiv
 
+%check
+%make_build --debug=j check
+
 %files
 %license LICENCE.md
 %doc AUTHORS.md ChangeLog NEWS README
