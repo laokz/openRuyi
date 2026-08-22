@@ -4,8 +4,9 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%global githead 4e11e3d
-%global gitdate 20260316
+%global githead ef765f1
+%global lcommit ef765f13c8c5aec7fba362651ac20b18c87e9f65
+%global gitdate 20260821
 
 Name:           gnulib
 Version:        0+git%{gitdate}.%{githead}
@@ -14,8 +15,9 @@ Summary:        GNU Portability Library
 License:        GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND GFDL-1.3-or-later AND FSFULLRSD
 URL:            https://www.gnu.org/software/gnulib
 VCS:            git:https://git.savannah.gnu.org/git/gnulib.git
-#!RemoteAsset
-Source:         https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=snapshot;h=%{githead};sf=tgz;name=gnulib-%{githead}.tar.gz#/gnulib-%{githead}.tar.gz
+#!RemoteAsset:  git+https://git.savannah.gnu.org/git/gnulib.git#%{lcommit}
+#!CreateArchive
+Source:         %{name}-%{githead}.tar.gz
 BuildSystem:    autotools
 
 BuildRequires:  autoconf
