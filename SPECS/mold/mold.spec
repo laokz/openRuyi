@@ -27,11 +27,16 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(tbb)
+%ifarch riscv64
+# For riscv64-arch-riscv64-emit-relocs-relax test.
+BuildRequires:  glibc-static
+%endif
 
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 
 %patchlist
+0001-Fix-test-for-some-targets.patch
 # Allow building against the system-provided `xxhash.h`
 1000-Use-system-compatible-include-path-for-xxhash.h.patch
 

@@ -1,0 +1,21 @@
+From f716fb62def04d7e0d8d266a33ba4bb88476b210 Mon Sep 17 00:00:00 2001
+From: Rui Ueyama <ruiu@cs.stanford.edu>
+Date: Sun, 23 Aug 2026 21:20:56 +0900
+Subject: [PATCH] Fix test for some targets
+
+Fixes https://github.com/rui314/mold/issues/1638
+---
+ test/separate-debug-file-sort.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/separate-debug-file-sort.sh b/test/separate-debug-file-sort.sh
+index 3fb5ec6b18..abfda730ae 100755
+--- a/test/separate-debug-file-sort.sh
++++ b/test/separate-debug-file-sort.sh
+@@ -23,5 +23,5 @@ flock $t/exe.dbg true
+ readelf -p .debug_line_str $t/exe.dbg > $t/str
+ 
+ if grep -Fw a.c $t/str; then
+-  grep -A10 -Fw a.c $t/str | grep -Fw b.c
++  sed -n '/a\.c/,$p' $t/str | grep -Fw b.c
+ fi
