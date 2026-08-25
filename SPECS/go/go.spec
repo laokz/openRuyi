@@ -10,7 +10,7 @@
 # code.google.com/p/go/issues/detail?id=5238
 %global debug_package %{nil}
 
-%bcond bootstrap 1
+%bcond bootstrap 0
 
 %if %{with bootstrap}
 %bcond race 0
@@ -50,18 +50,18 @@
   /usr/lib/rpm/brp-compress
 
 Name:           go
-Version:        1.26.5
+Version:        1.27.0
 Release:        %autorelease
 Summary:        The Go Programming Language toolchain
 License:        BSD-3-Clause
 URL:            https://go.dev/
 VCS:            git:https://github.com/golang/go
-#!RemoteAsset:  sha256:495be4bc87176ac567392e5b4116abd98466d33d7b49d41e764ccc6976b2dc42
+#!RemoteAsset:  sha256:7002403d7cc44529ef6d26f69a44818263395ead7c16c05a5808ae047ebeb0e5
 Source0:        https://go.dev/dl/%{name}%{version}.src.tar.gz
 #!RemoteAsset:  sha256:5c2c3b16caefa1d968a94c1daca04a7ca301a496d9b086e17ad77bb81393f053
-Source1:        https://go.dev/dl/%{name}%{version}.linux-amd64.tar.gz
+Source1:        https://go.dev/dl/%{name}1.26.5.linux-amd64.tar.gz
 #!RemoteAsset:  sha256:d4a24dd4484d3f86b99c2d300af0dea5d184557e6d61eb7aba19ff61662750e3
-Source2:        https://go.dev/dl/%{name}%{version}.linux-riscv64.tar.gz
+Source2:        https://go.dev/dl/%{name}1.26.5.linux-riscv64.tar.gz
 
 # Bootstrap from a pre-existing Go compiler.
 %if %{without bootstrap}
@@ -75,8 +75,8 @@ Recommends:     %{name}-cshared = %{version}-%{release}
 Requires:       glibc
 
 %patchlist
-# https://go-review.googlesource.com/c/go/+/732560
-0001-crypto-sha1-provide-optimised-assembly-for-riscv64.patch
+# These tests are fragile on our OBS x86-64.
+2000-remove-fragile-tests-on-obs.patch
 
 %description
 The Go Programming Language. This package contains the compiler, tools,
@@ -137,8 +137,12 @@ export GORISCV64=%{goriscv64}
 %if %{with bootstrap}
 export GOROOT_BOOTSTRAP=%{_builddir}/%{name}-bootstrap
 %else
-export GOROOT_BOOTSTRAP=%{_libdir}/golang
+export GOROOT_BOOTSTRAP=%{_libdir}/go
 %endif
+# Currently, go 1.25+ generated DWARF5 breaks debugedit.
+# https://github.com/golang/go/issues/76630
+# https://sourceware.org/bugzilla/show_bug.cgi?id=33204
+export GOEXPERIMENT=nodwarf5
 
 pushd src
 ./make.bash -v
