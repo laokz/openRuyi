@@ -69,13 +69,13 @@
 # openRuyi: virtio-gpu not supported yet
 %bcond have_virgl 0
 
-# VNC and SDL image and QEMU-UI not supported yet
+# openRuyi: VNC and SDL image and QEMU-UI not fully supported yet
 %bcond have_vnc 0
 %bcond have_gvnc_devel 0
 %bcond have_sdl_image 0
 %bcond have_opengl 0
 %bcond have_egl 0
-%bcond have_gtk3 0
+%bcond have_gtk3 1
 
 # openRuyi: persistent memory not supported yet
 %bcond have_pmem 0
@@ -146,9 +146,6 @@
 %bcond have_block_iscsi 0
 
 # Not supported on x86_64 and riscv64
-%bcond have_block_gluster 0
-
-# Not supported on x86_64 and riscv64
 %bcond have_block_nfs 0
 
 # Not supported on x86_64 riscv64
@@ -177,13 +174,13 @@
 %global qemudocdir %{_docdir}/%{name}
 
 Name:           qemu
-Version:        11.0.1
+Version:        11.1.0
 Release:        %autorelease
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 URL:            http://www.qemu.org/
 VCS:            git:https://gitlab.com/qemu-project/qemu
-#!RemoteAsset:  sha256:0d235f5820278d914a3155ec27af8e4258d697ea892895570807d69c0cb8cd64
+#!RemoteAsset:  sha256:6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858
 Source0:        https://download.qemu.org/%{name}-%{version}.tar.xz
 Source1:        qemu-guest-agent.service
 Source2:        qemu-ga.sysconfig
@@ -192,9 +189,6 @@ Source4:        kvm.conf
 Source5:        kvm-x86.conf
 Source6:        kvm-riscv.conf
 BuildSystem:    autotools
-
-# Patch fixing ACPI table generation for KVM with PLIC emu
-Patch1:         0001-FROMLIST-hw-riscv-virt-acpi-build-Fix-RINTC-PLIC-con.patch
 
 BuildRequires:  hostname
 BuildRequires:  meson
@@ -312,10 +306,6 @@ BuildRequires:  pkgconfig(libjpeg)
 %if %{with have_brlapi}
 # Braille device support
 BuildRequires:  brlapi-devel
-%endif
-%if %{with have_block_gluster}
-# gluster block driver
-BuildRequires:  pkgconfig(glusterfs-api)
 %endif
 # GTK frontend
 %if %{with have_gtk3}
@@ -533,10 +523,8 @@ mkdir -p %{static_builddir}
   --disable-gcrypt                       \\\
   --disable-gettext                      \\\
   --disable-gio                          \\\
-  --disable-glusterfs                    \\\
   --disable-gnutls                       \\\
   --disable-gtk                          \\\
-  --disable-gtk-clipboard                \\\
   --disable-guest-agent                  \\\
   --disable-guest-agent-msi              \\\
   --disable-hv-balloon                   \\\
@@ -824,9 +812,6 @@ qemu_configure                                          \
   --enable-dmg                                          \
   --enable-fuse                                         \
   --enable-gio                                          \
-%if %{with have_block_gluster}
-  --enable-glusterfs                                    \
-%endif
 %if %{with have_gtk3}
   --enable-gtk                                          \
 %endif
@@ -1120,6 +1105,8 @@ rm -rf %{static_buildroot}
 # endif !tools_only
 %endif
 
+%find_lang %{name} --generate-subpackages
+
 %check
 
 # Disable iotests.
@@ -1272,9 +1259,6 @@ popd
 %{_libdir}/%{name}/ui-opengl.so
 %endif
 %{_libdir}/%{name}/block-dmg-bz2.so
-%if %{with have_block_gluster}
-%{_libdir}/%{name}/block-gluster.so
-%endif
 %if %{with have_block_nfs}
 %{_libdir}/%{name}/block-nfs.so
 %endif
@@ -1700,6 +1684,7 @@ popd
 %files system
 %{_bindir}/qemu-system-aarch64
 %{_bindir}/qemu-system-alpha
+%{_bindir}/qemu-system-hexagon
 %{_bindir}/qemu-system-hppa
 %{_bindir}/qemu-system-loongarch64
 %{_bindir}/qemu-system-mips64
