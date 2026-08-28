@@ -7,13 +7,13 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           pcsc-lite
-Version:        2.3.3
+Version:        2.5.1
 Release:        %autorelease
 Summary:        Middleware to access a smart card using SCard API (PC/SC)
 License:        BSD-3-Clause
 URL:            https://pcsclite.apdu.fr/
 VCS:            git:https://github.com/LudovicRousseau/PCSC.git
-#!RemoteAsset:  sha256:cdff7d7153a0b37aa74e26dfec89ec7dc5c5286aa21b91b903e38739d227e8e7
+#!RemoteAsset:  sha256:bfcfe38a20afc49849c6bf55325e38f449fc4b26d3923fdc32b969ae41a8741b
 Source:         https://pcsclite.apdu.fr/files/pcsc-lite-%{version}.tar.xz
 BuildSystem:    meson
 
@@ -83,6 +83,7 @@ install -d %{buildroot}%{_sysconfdir}/reader.conf.d
 %{_sbindir}/pcscd
 %{_userunitdir}/pcscd.socket
 %{_userunitdir}/pcscd.service
+%{_sysusersdir}/pcscd-sysusers.conf
 %{_datadir}/metainfo/fr.apdu.pcsclite.metainfo.xml
 %{_datadir}/polkit-1/actions/org.debian.pcsc-lite.policy
 %{_mandir}/man5/reader.conf.5*
@@ -91,7 +92,6 @@ install -d %{buildroot}%{_sysconfdir}/reader.conf.d
 %files devel
 %{_bindir}/pcsc-spy
 %{_includedir}/PCSC/
-%{_libdir}/lib*.a
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/libpcsclite.pc
 %{_mandir}/man1/*
