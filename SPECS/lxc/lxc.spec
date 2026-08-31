@@ -6,13 +6,13 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           lxc
-Version:        6.0.6
+Version:        7.0.0
 Release:        %autorelease
 Summary:        Linux Resource Containers
 License:        LGPL-2.1-or-later AND GPL-2.0-only
 URL:            https://linuxcontainers.org/lxc
 VCS:            git:https://github.com/lxc/lxc
-#!RemoteAsset:  sha256:b0ba4537258d2b848fd07dedb1044dab132de3fb3f1976d240da40a7dee1b8cf
+#!RemoteAsset:  sha256:ba0c860626efbac6683f351dd718edb062065e919716d787b89e3d547c5d9493
 Source0:        https://linuxcontainers.org/downloads/lxc/lxc-%{version}.tar.gz
 Source1:        lxc-net
 BuildSystem:    meson
@@ -111,4 +111,4 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/lxc-net
 %{_libdir}/liblxc.so
 
 %changelog
-%{?autochangelog}
+%autochangelog

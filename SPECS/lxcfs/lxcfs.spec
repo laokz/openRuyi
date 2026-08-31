@@ -6,13 +6,13 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           lxcfs
-Version:        6.0.6
+Version:        7.0.0
 Release:        %autorelease
 Summary:        FUSE based filesystem for LXC
 License:        Apache-2.0
 URL:            https://linuxcontainers.org/lxcfs
 VCS:            git:https://github.com/lxc/lxcfs
-#!RemoteAsset:  sha256:386339ba4cde289b0f6df4fe7a614caa1e45dd91bc0200b4aff6c51bf9d5ef9e
+#!RemoteAsset:  sha256:89a5ac0e98cfae6aad26d00e0e977affe810865ebccd4c4cf9422f980ade5624
 Source:         https://linuxcontainers.org/downloads/lxcfs/lxcfs-%{version}.tar.gz
 BuildSystem:    meson
 
