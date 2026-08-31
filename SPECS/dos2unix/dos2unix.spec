@@ -7,14 +7,14 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           dos2unix
-Version:        7.5.5
+Version:        7.5.7
 Release:        %autorelease
 Summary:        Text file format converters
-License:        BSD-3-Clause
-URL:            https://waterlan.home.xs4all.nl/dos2unix.html
-# VCS: No VCS link available
-#!RemoteAsset:  sha256:75f692b8484c8c24579a2ffd87df16b9c9428ed95497e3393a21d1ba0697ac33
-Source:         https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
+License:        FreeBSD
+URL:            https://waterlander.net/dos2unix/
+VCS:            git:https://git.code.sf.net/p/dos2unix/dos2unix
+#!RemoteAsset:  sha256:669ee27120ae71589f638fe3a167d6ea54f8633f5ab1b282551bd7a7c9510dfa
+Source:         https://waterlander.net/dos2unix/files/dos2unix-%{version}.tar.gz
 BuildSystem:    autotools
 
 BuildOption(build):   LDFLAGS="%{build_ldflags}" prefix=%{_prefix}
