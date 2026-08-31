@@ -8,13 +8,13 @@
 %global pcsc_lite_ver 1.8.9
 
 Name:           ccid
-Version:        1.7.0
+Version:        1.8.3
 Release:        %autorelease
 Summary:        Generic USB CCID smart card reader driver
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://ccid.apdu.fr/
 VCS:            git:https://salsa.debian.org/rousseau/CCID.git
-#!RemoteAsset
+#!RemoteAsset:  sha256:2f22877569154a75d54922db45c4e0cb3d290e72c60c574dc08966599cdcc5ac
 Source0:        https://ccid.apdu.fr/files/ccid-%{version}.tar.xz
 BuildSystem:    meson
 
@@ -48,4 +48,4 @@ cp -p src/openct/LICENSE LICENSE.openct
 %{_udevrulesdir}/92_pcscd_ccid.rules
 
 %changelog
-%{?autochangelog}
+%autochangelog
