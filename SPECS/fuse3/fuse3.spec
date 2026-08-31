@@ -81,6 +81,9 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}
 # Delete pointless udev rules
 rm -f %{buildroot}%{_udevrulesdir}/99-fuse3.rules
 
+# Provide unversioned fusermount
+ln -sf fusermount3 %{buildroot}%{_bindir}/fusermount
+
 # Seems no check
 %check
 
@@ -89,6 +92,7 @@ rm -f %{buildroot}%{_udevrulesdir}/99-fuse3.rules
 %license LICENSE GPL2.txt
 %{_sbindir}/mount.fuse3
 %attr(4755,root,root) %{_bindir}/fusermount3
+%{_bindir}/fusermount
 %{_mandir}/man1/*
 %{_mandir}/man8/*
 %{_libdir}/libfuse3.so.*
@@ -102,4 +106,4 @@ rm -f %{buildroot}%{_udevrulesdir}/99-fuse3.rules
 %config(noreplace) %{_sysconfdir}/fuse.conf
 
 %changelog
-%{?autochangelog}
+%autochangelog

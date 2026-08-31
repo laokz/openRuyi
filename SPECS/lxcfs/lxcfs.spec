@@ -27,6 +27,9 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 
 %{?systemd_requires}
+Requires(post):    /usr/bin/fusermount
+Requires(preun):   /usr/bin/fusermount
+Requires(postun):  /usr/bin/fusermount
 
 %description
 LXCFS is a small FUSE filesystem written with the intention of making
@@ -60,4 +63,4 @@ mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 %dir %{_sharedstatedir}/lxcfs
 
 %changelog
-%{?autochangelog}
+%autochangelog
