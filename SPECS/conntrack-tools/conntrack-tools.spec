@@ -9,13 +9,13 @@
 %bcond systemd 1
 
 Name:           conntrack-tools
-Version:        1.4.8
+Version:        1.4.9
 Release:        %autorelease
 Summary:        Userspace tools for interacting with the Connection Tracking System
 License:        GPL-2.0-only
 URL:            http://conntrack-tools.netfilter.org/
 VCS:            git:https://git.netfilter.org/conntrack-tools
-#!RemoteAsset
+#!RemoteAsset:  sha256:c15afe488a8d408c9d6d61e97dbd19f3c591942f62c13df6453a961ca4231cae
 Source0:        http://netfilter.org/projects/conntrack-tools/files/%{name}-%{version}.tar.xz
 Source1:        conntrackd.service
 Source2:        conntrackd.conf
@@ -84,4 +84,4 @@ install -m644   %{SOURCE1} %{buildroot}%{_unitdir}/
 %{_mandir}/man8/*
 
 %changelog
-%{?autochangelog}
+%autochangelog
