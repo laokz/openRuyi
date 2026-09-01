@@ -6,16 +6,14 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           libnftnl
-Version:        1.3.0
+Version:        1.3.2
 Release:        %autorelease
 Summary:        Library for low-level interaction with nftables Netlink's API over libmnl
 License:        GPL-2.0-or-later
 URL:            https://netfilter.org/projects/libnftnl/
 VCS:            git:https://git.netfilter.org/libnftnl
-#!RemoteAsset
+#!RemoteAsset:  sha256:c97abc3409f8fa396b4462b2bb7f147a3a47a4ddc97cfa0b2f18890c9cfde8b0
 Source0:        %{url}/files/%{name}-%{version}.tar.xz
-#!RemoteAsset
-Source1:        %{url}/files/%{name}-%{version}.tar.xz.sig
 BuildSystem:    autotools
 
 BuildOption(conf):  --disable-static
@@ -45,4 +43,4 @@ developing applications that use %{name}.
 %{_includedir}/libnftnl
 
 %changelog
-%{?autochangelog}
+%autochangelog
