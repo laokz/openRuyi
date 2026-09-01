@@ -7,13 +7,13 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           nftables
-Version:        1.1.5
+Version:        1.1.6
 Release:        %autorelease
 Summary:        Netfilter Tables userspace utilities
 License:        GPL-2.0-only
 URL:            https://netfilter.org/projects/nftables/
 VCS:            git:https://git.netfilter.org/nftables
-#!RemoteAsset:  sha256:1daf10f322e14fd90a017538aaf2c034d7cc1eb1cc418ded47445d714ea168d4
+#!RemoteAsset:  sha256:372931bda8556b310636a2f9020adc710f9bab66f47efe0ce90bff800ac2530c
 Source0:        https://netfilter.org/projects/nftables/files/nftables-%{version}.tar.xz
 Source1:        nftables.service
 Source2:        nftables.conf
@@ -38,7 +38,7 @@ BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  python3dist(pip)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
-BuildRequires:  pkgconfig(libnftnl) >= 1.3.0
+BuildRequires:  pkgconfig(libnftnl) >= 1.3.1
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  autoconf
@@ -96,6 +96,9 @@ cd py
 %pyproject_install
 %pyproject_save_files nftables
 
+# The tests need root priviledge.
+%check
+
 %post services -p /bin/sh
 %systemd_post nftables.service
 %preun services -p /bin/sh
@@ -106,7 +109,6 @@ cd py
 %files
 %license COPYING
 %doc %{_docdir}/nftables/examples/
-%doc %{_docdir}/nftables/main.nft
 %{_sbindir}/nft
 %{_libdir}/libnftables.so.*
 %{_mandir}/man5/libnftables-json.5*
