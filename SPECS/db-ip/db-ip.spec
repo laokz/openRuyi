@@ -4,17 +4,17 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%global upstream_version 2026-05
+%global upstream_version 2026-09
 
 Name:           db-ip
-Version:        2026.05
+Version:        2026.09
 Release:        %autorelease
 Summary:        DB-IP City Lite Database
 License:        CC-BY-4.0
 URL:            https://db-ip.com/
-#!RemoteAsset:  sha256:9520cc8c65dc04cafc88682ac89dba2cfbbcb5f686e9094ab021fcf2ae2c02f0
+#!RemoteAsset:  sha256:c5d05b35a45c3eea0cadc728c8f5ad751693d4e270529b731442172a73f05954
 Source0:        https://download.db-ip.com/free/dbip-city-lite-%{upstream_version}.mmdb.gz
-#!RemoteAsset:  sha256:d781b1eb0d41cd2fb7fb1cfa0a227738c9b72a0bd4da97fecfd4ce8b2764cb85
+#!RemoteAsset:  sha256:25f5c2e9b98d1a479567e654927c6b34867aaadc96a01ee25d5790c478685ab5
 Source1:        https://download.db-ip.com/free/dbip-asn-lite-%{upstream_version}.mmdb.gz
 #!RemoteAsset:  sha256:9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411
 Source2:        https://creativecommons.org/licenses/by/4.0/legalcode.txt
