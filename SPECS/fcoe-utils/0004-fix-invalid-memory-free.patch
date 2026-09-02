@@ -1,0 +1,47 @@
+From 00d4d04fd6ef3bc7d882cfed42ac7bf61484627a Mon Sep 17 00:00:00 2001
+From: panzhe <panzhe@kylinos.cn>
+Date: Tue, 26 May 2026 17:10:07 +0800
+Subject: [PATCH] fix invalid memory free
+
+When asprintf() fails in format_capstr(), it returns the string
+literal "Unknown" which resides in .rodata. show_short_lun_info()
+then calls free() on this non-heap pointer, causing a segfault.
+
+Fix by returning NULL on failure (free(NULL) is safe per standard)
+and adding NULL checks at both call sites to preserve the "Unknown"
+display semantics.
+---
+ fcoeadm_display.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fcoeadm_display.c b/fcoeadm_display.c
+index 3a18138eefd..77afe078388 100644
+--- a/fcoeadm_display.c
++++ b/fcoeadm_display.c
+@@ -235,7 +235,7 @@ static char *format_capstr(uint64_t size, unsigned int blksize)
+ 
+ 	ret = asprintf(&capstr, "%0.2f %s", cap_abbr, abbr);
+ 	if (ret == -1)
+-		return "Unknown";
++		return NULL;
+ 
+ 	return capstr;
+ }
+@@ -322,7 +322,7 @@ static void show_full_lun_info(unsigned int hba, unsigned int port,
+ 	printf("        LUN ID:             %d\n", lun);
+ 
+ 	capstr = format_capstr(lba, blksize);
+-	printf("        Capacity:           %s\n", capstr);
++	printf("        Capacity:           %s\n", capstr ? capstr : "Unknown");
+ 	printf("        Capacity in Blocks: %" PRIu64 "\n", lba);
+ 	printf("        Block Size:         %" PRIu32 " bytes\n", blksize);
+ 	printf("        Status:             Attached\n");
+@@ -393,7 +393,7 @@ static void show_short_lun_info(unsigned int hba, unsigned int port,
+ 	/* Show the LUN info */
+ 	printf("%10d  %-11s  %10s  %7d     %s %s (rev %s)\n",
+ 	       lun, osname,
+-	       capstr, blksize,
++	       capstr ? capstr : "Unknown", blksize,
+ 	       vendor, model, rev);
+ 
+ 	free(capstr);

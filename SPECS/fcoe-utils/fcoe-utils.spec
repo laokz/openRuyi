@@ -8,8 +8,6 @@
 # Avoid: error: ‘_FORTIFY_SOURCE’ redefined
 %global build_cflags $(echo "%{build_cflags}" | sed -e 's/-D_FORTIFY_SOURCE=3//')
 
-%global commit b233050
-
 Name:           fcoe-utils
 Version:        1.0.34
 Release:        %autorelease
@@ -17,13 +15,15 @@ Summary:        Fibre Channel over Ethernet utilities
 License:        GPL-2.0-only
 URL:            http://www.open-fcoe.org
 VCS:            git:https://github.com/openSUSE/fcoe-utils
-#!RemoteAsset:  sha256:826be5406753bac482b3a0533f582755d2847b4972714aaa56dc611418c1fde7
-Source:         https://github.com/openSUSE/fcoe-utils/archive/%{commit}.tar.gz
+#!RemoteAsset:  sha256:9e85705179df04eb4813e514642a1b9ed6ac1694dc961d6f1ff5e76a55fd879e
+Source:         https://github.com/openSUSE/fcoe-utils/archive/refs/tags/v%{version}.tar.gz
 BuildSystem:    autotools
 
 Patch0:         0001-fcoemon-add-snprintf-string-precision-modifiers-in-f.patch
 Patch1:         0002-Don-t-attempt-to-memcpy-zero-bytes.patch
 Patch2:         0003-Fix-build-against-glibc-2.43.patch
+Patch3:         0004-fix-invalid-memory-free.patch
+Patch4:         0005-Fix-GCC-12-warning.patch
 
 BuildOption(conf):  --with-systemdsystemunitdir=%{_unitdir}
 
