@@ -15,13 +15,13 @@
 %define mmnisa %{mmn}%{__isa_name}%{__isa_bits}
 
 Name:           httpd
-Version:        2.4.66
+Version:        2.4.68
 Release:        %autorelease
 Summary:        Apache HTTP Server
 License:        Apache-2.0
 URL:            https://httpd.apache.org/
 VCS:            git:https://github.com/apache/httpd.git
-#!RemoteAsset
+#!RemoteAsset:  sha256:68c74d4df38c26bed4dfbdb8f3baf1eb532f3872357becc1bba5d136f6b63c06
 Source0:        https://www.apache.org/dist/httpd/httpd-%{version}.tar.bz2
 Source1:        config.layout
 Source2:        httpd.sysusers
@@ -109,7 +109,6 @@ BuildRequires:  systemd-rpm-macros
 # Requires:       system-logos-httpd
 # Add after we have
 # Requires:       /etc/mime.types
-Recommends:     mod_http2
 
 Provides:       webserver
 Provides:       mod_dav = %{version}-%{release}
@@ -322,4 +321,4 @@ rm -rf %{buildroot}/etc/httpd/conf/original \
 %exclude %{_mandir}/man1/dbmmanage.1*
 
 %changelog
-%{?autochangelog}
+%autochangelog
