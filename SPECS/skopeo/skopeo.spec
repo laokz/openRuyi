@@ -7,12 +7,12 @@
 %define _test_target test-unit-local
 
 Name:           skopeo
-Version:        1.23.0
+Version:        1.24.0
 Release:        %autorelease
 Summary:        Work with remote images registries - retrieving information, images, signing content
 License:        Apache-2.0
 URL:            https://github.com/podman-container-tools/skopeo
-#!RemoteAsset:  sha256:de96bfc2bb523c852af675ffdadd934484812ce190aa8620e1d5fd6c51442e25
+#!RemoteAsset:  sha256:1eea9364e344c4d6cb398fac53bc387663d19690552003b43c75819e8bb55527
 Source0:        https://github.com/podman-container-tools/skopeo/archive/v%{version}.tar.gz
 BuildSystem:    autotools
 
