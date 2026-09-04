@@ -96,6 +96,7 @@ BuildOption(conf):  -Dlibidn2=enabled
 BuildOption(conf):  -Dnetworkd=%{?with_network:true}%{!?with_network:false}
 BuildOption(conf):  -Dresolve=%{?with_network:true}%{!?with_network:false}
 BuildOption(conf):  -Dnss-resolve=%{?with_network:enabled}%{!?with_network:disabled}
+BuildOption(conf):  -Dntp-servers="0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
 BuildOption(conf):  -Dlibcurl=enabled
 BuildOption(conf):  -Dlibfido2=%{?with_fido2:enabled}%{!?with_fido2:disabled}
 BuildOption(conf):  -Defi=true
