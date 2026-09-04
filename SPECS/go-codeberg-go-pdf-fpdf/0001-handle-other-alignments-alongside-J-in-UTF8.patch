@@ -1,0 +1,104 @@
+From 49f5a634f68ed118e85370ab626da62e4588b43d Mon Sep 17 00:00:00 2001
+From: Jared Reisinger <jaredreisinger@hotmail.com>
+Date: Wed, 27 May 2026 13:41:31 +0200
+Subject: [PATCH] fpdf: handle other alignments alongside "J" in UTF8
+ CellFormat
+
+The "J" justification handling in CellFormat() was an equality test, not a `strings.Contains()` check (like the others), and therefore it was *only* succeeding on a "J" with no other (vertical) alignment.
+
+This changes that check to `strings.Contains()` and adds a test that verifies that the justification codepath is executed even for an alignment like "JA".
+
+Fixes #104
+
+Reviewed-on: https://codeberg.org/go-pdf/fpdf/pulls/105
+---
+ fpdf.go      |  4 ++--
+ fpdf_test.go | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 2 deletions(-)
+
+diff --git a/fpdf.go b/fpdf.go
+index a815e72..1d23e95 100644
+--- a/fpdf.go
++++ b/fpdf.go
+@@ -2776,7 +2776,7 @@ func (f *Fpdf) CellFormat(w, h float64, txtStr, borderStr string, ln int,
+ 			s.printf("q %s ", f.color.text.str)
+ 		}
+ 		//If multibyte, Tw has no effect - do word spacing using an adjustment before each space
+-		if (f.ws != 0 || alignStr == "J") && f.isCurrentUTF8 { // && f.ws != 0
++		if (f.ws != 0 || strings.Contains(alignStr, "J")) && f.isCurrentUTF8 { // && f.ws != 0
+ 			if f.isRTL {
+ 				txtStr = reverseText(txtStr)
+ 			}
+@@ -2786,7 +2786,7 @@ func (f *Fpdf) CellFormat(w, h float64, txtStr, borderStr string, ln int,
+ 			}
+ 			space := f.escape(utf8toutf16(" ", false))
+ 			strSize := f.GetStringSymbolWidth(txtStr)
+-			s.printf("BT 0 Tw %.2f %.2f Td [", (f.x+dx)*k, (f.h-(f.y+.5*h+.3*f.fontSize))*k)
++			s.printf("BT 0 Tw %.2f %.2f Td [", (f.x+dx)*k, (f.h-(f.y+dy+.5*h+.3*f.fontSize))*k)
+ 			t := strings.Split(txtStr, " ")
+ 			shift := float64((wmax - strSize)) / float64(len(t)-1)
+ 			numt := len(t)
+diff --git a/fpdf_test.go b/fpdf_test.go
+index bc1dc2d..b141385 100644
+--- a/fpdf_test.go
++++ b/fpdf_test.go
+@@ -25,6 +25,7 @@ import (
+ 	"fmt"
+ 	"os"
+ 	"path/filepath"
++	"regexp"
+ 	"runtime"
+ 	"testing"
+ 
+@@ -326,3 +327,51 @@ func BenchmarkCurveTo(b *testing.B) {
+ 		pdf.CurveTo(190, 100, 105, 100)
+ 	}
+ }
++
++func TestIssue104CellFormatJustifiedVerticalAlign(t *testing.T) {
++	pdf := fpdf.New("P", "mm", "A4", "")
++	pdf.AddPage()
++
++	// force a UTF8 font...
++	pdf.AddUTF8Font("DejaVu", "", "./font/DejaVuSansCondensed.ttf")
++	if pdf.Error() != nil {
++		t.Fatalf("unable to load UTF8 font")
++	}
++
++	pdf.SetFont("DejaVu", "", 10)
++
++	pdf.CellFormat(100, 10, "This is justified-baseline text.", "", 0, "JA", false, 0, "")
++	if pdf.Error() != nil {
++		t.Fatalf("not expecting error when rendering text")
++	}
++
++	// If we didn't get justified text, the PDF output will contain:
++	//
++	//   BT 31.19 785.17 Td (This is justified-baseline text.)Tj ET
++	//
++	// If it *is* justified, we'll get placement of individual words:
++	//
++	//   BT 0 Tw 31.19 796.37 Td [(This) -4870.000( ) (is) -4870.000( ) (justified-baseline) -4870.000( ) (text.) ] TJ ET
++	//
++	// We don't need to look for exact positioning, we just need to look for the
++	// indication that each word is positioned.
++	w := &bytes.Buffer{}
++	if err := pdf.Output(w); err != nil {
++		t.Errorf("unexpected err: %s", err)
++	}
++
++	// I'm having a weird problem where the pattern matches through:
++	//
++	//   BT 0 Tw 31.19 796.37 Td [(
++	//
++	// ... but as soon as I include "This", it fails to match! Fortunately, the
++	// leading instructions ("BT 0 Tw...") are unique enough to let us know
++	// we're getting to the correct codepath.
++
++	// pattern := regexp.MustCompile(`\nBT 0 Tw .* Td \[\(This\) .* \(is\) .* \(justified-baseline\) .* \(text.\) ] TJ ET\n`)
++	pattern := regexp.MustCompile(`\bBT 0 Tw .* Td \[\(`)
++
++	if !pattern.MatchReader(w) {
++		t.Fatal("unable to find justified text in PDF output")
++	}
++}
