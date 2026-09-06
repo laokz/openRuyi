@@ -27,12 +27,12 @@
 }
 
 Name:           go-github-go-git-go-git-v5
-Version:        5.19.1
+Version:        5.19.2
 Release:        %autorelease
 Summary:        Pure Go Git implementation
 License:        Apache-2.0
 URL:            https://github.com/go-git/go-git
-#!RemoteAsset:  sha256:91b44587081b94cee4c379f7eaad28e660384f77c334da57cf53551e7e710596
+#!RemoteAsset:  sha256:6c4524af67065f3b28708c3a3aa0931c43aa17c0cddd5762a38717e1286e8ed8
 Source0:        https://github.com/go-git/go-git/archive/refs/tags/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildSystem:    golangmodules
