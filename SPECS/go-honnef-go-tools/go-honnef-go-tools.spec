@@ -16,6 +16,7 @@ License:        MIT
 URL:            https://github.com/dominikh/go-tools
 #!RemoteAsset:  sha256:0a3fa9aa78b18c225edf5984caffd782a78dc49667372c9985c21fd3901e088a
 Source0:        https://github.com/dominikh/go-tools/archive/refs/tags/v%{upstream_version}.tar.gz#/%{_name}-%{upstream_version}.tar.gz
+                https://github.com/dominikh/go-tools/archive/refs/tags/v0.8.1.tar.gz
 BuildArch:      noarch
 BuildSystem:    golangmodules
 
