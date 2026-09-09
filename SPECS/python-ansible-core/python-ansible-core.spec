@@ -8,12 +8,12 @@
 %global pypi_name ansible_core
 
 Name:           python-%{srcname}
-Version:        2.20.5
+Version:        2.21.4
 Release:        %autorelease
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later AND Apache-2.0 AND BSD-3-Clause AND MIT AND PSF-2.0
 URL:            https://github.com/ansible/ansible
-#!RemoteAsset:  sha256:82e3049d95e6e02e5d20d4a5a8e10533a55e0cc52e878e4cf77166c45410f16f
+#!RemoteAsset:  sha256:81a9329f4f12cfa5008dcab5d1bf23ae69b7effc08c0f00048ab2461147ae95a
 Source0:        https://files.pythonhosted.org/packages/source/a/%{srcname}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildSystem:    pyproject
@@ -43,7 +43,7 @@ network automation, and multi-node orchestration.
 %pyproject_buildrequires
 
 %files -f %{pyproject_files}
-%doc changelogs/CHANGELOG-v2.20.rst
+%doc changelogs/CHANGELOG-*.rst
 %doc README.md
 %license COPYING
 %license licenses/*.txt
