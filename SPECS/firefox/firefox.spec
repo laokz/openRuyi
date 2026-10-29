@@ -302,7 +302,6 @@ Requires:       ffmpeg
 2000-riscv64-Use-long-tail-jump-for-xptcall-stubs.patch
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1865601
 2001-riscv64-enable-gles-rendering.patch
-2003-blindly-set-rust-rva23-target-when-needed.patch
 2005-add-riscv64-support-for-crash-context.patch
 2006-enable-crashreporter-for-riscv64.patch
 # https://github.com/ggml-org/ggml/pull/1571
@@ -402,6 +401,10 @@ echo "ac_add_options --enable-official-branding" >> .mozconfig
 # Some libraries we don't have but i think we should? - 251
 %if %{with fdk_aac}
 echo "ac_add_options --with-system-fdk-aac" >> .mozconfig
+%endif
+
+%if "%{openruyi_riscv_arch}" == "-march=rva23u64"
+echo "ac_add_options --host=riscv64a23-unknown-linux-gnu" >> .mozconfig
 %endif
 
 %build
